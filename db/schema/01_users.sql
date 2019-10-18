@@ -1,7 +1,27 @@
--- Drop and recreate Users table (Example)
+DROP TABLE IF EXIST users;
+DROP TABLE IF EXIST maps;
+DROP TABLE IF EXIST pins;
 
-DROP TABLE IF EXISTS users CASCADE;
-CREATE TABLE users (
+CREATE TABLE users {
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL
-);
+  full_name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  password TEXT NOT NULL
+};
+
+CREATE TABLE maps {
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  title TEXT NOT NULL,
+  descriptions TEXT NOT NULL,
+  is_favourite BOOLEAN NOT NULL DEFAULT FALSE
+};
+
+
+CREATE TABLE pins {
+  id SERIAL PRIMARY KEY NOT NULL,
+  map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
+  comment TEXT,
+  latitude INTEGER NOT NULL,
+  longitude INTEGER NOT NULL
+};
