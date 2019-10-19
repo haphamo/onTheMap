@@ -23,3 +23,23 @@ module.exports = (db) => {
   });
   return router;
 };
+
+module.exports = (db) => {
+
+  // GET request for Users Page
+  router.get("/users", (req, res => {
+    console.log('This is the Users Page')
+  }))
+
+  // GET request for Favourites Page
+  router.get("/favourites" (req), res => {
+    console.log('This is the Favourites Page')
+  })
+
+  // GET request for Create Page
+
+
+
+
+
+};
