@@ -15,20 +15,7 @@ function initMap() {
     addMarker({coords:event.latLng});
     //Add marker
   })
-  // //add marker
-  // let marker = new google.maps.Marker({
-  //   position:{ lat: 42.7652, lng: -80.5433 },
-  //   map:map
-  // });
-  // //Added text box above marker
-  // let infoWindow = new google.maps.InfoWindow({
-  //   content: '<h1>title</h1>'
-  // });
-  // marker.addListener('click', function(){
-  //   infoWindow.open(map, marker)
-  // })
 
-  //Create a function which adds marker
 
   let markers = [{coords: { lat: 42.7652, lng: -80.5433 }}, {coords: { lat: 42.9332, lng: -80.6643 }}];
 
@@ -43,6 +30,7 @@ function initMap() {
     let marker = new google.maps.Marker({
     position: props.coords,
     map:map
+
   });
   }
 
