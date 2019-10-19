@@ -1,0 +1,9 @@
+.maps {
+  display:flex;
+  flex-direction: column;
+  height: 400px;
+  width: 70%;
+  margin: auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
