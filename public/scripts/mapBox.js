@@ -16,7 +16,7 @@ function initMap() {
   })
 
   //hard coded markers
-  let markers = [{coords: { lat: 43.6532, lng: -79.3832 }}, {coords: { lat: 43.5890, lng: -79.6441 }}];
+  let markers = [{coords: { lat: 43.6532, lng: -79.3832 }, content: "Toronto!"}, {coords: { lat: 43.5890, lng: -79.6441 }, content: 'Mississaga!'}];
   //created a loop for add markers for given latlng
   for (let marker in markers) {
    addMarker(markers[marker]);
@@ -25,14 +25,24 @@ function initMap() {
   marker.addListener('click', function(){
     infoWindow.open(map, marker)
   })
-
+  //function which adds markers and displays comment
   function addMarker(props){
-    let marker = new google.maps.Marker({
-    position: props.coords,
-    map:map,
+    var marker = new google.maps.Marker({
+      position:props.coords,
+      map:map,
 
+    });
+    // Check content
+    if(props.content){
+      var infoWindow = new google.maps.InfoWindow({
+        content:props.content
+      });
 
-  });
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
+    }
   }
+
 
 }
