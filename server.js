@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const api_key    = process.env.API_KEY;
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -47,7 +48,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  let templateVars = { api_key }
+  res.render("index", templateVars);
 });
 
 app.listen(PORT, () => {
