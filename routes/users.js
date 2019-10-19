@@ -32,7 +32,7 @@ module.exports = (db) => {
   }))
 
   // GET request for Favourites Page
-  router.get("/favorites" (req), res => {
+  router.get("/favorites" (req, res => {
     console.log('This is the Favourites Page')
   })
 
