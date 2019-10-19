@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/index.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -15,14 +16,18 @@
 
 
   </head>
-
-  <body>
-    <nav>
-      <a href="">OnTheMap</a>
-      <a href="">Home Page</a>
-      <a href="">Favourites</a>
-      <a href="">Users Page</a>
+  <header>
+    <nav class="nav-bar">
+      <a id="nav_logo" href="">OnTheMap</a>
+        <div class="nav_div">
+          <a class="nav_path" href="">Home Page</a>
+          <a class="nav_path" href="">Favourites</a>
+          <a class="nav_path" href="">Users Page</a>
+        </div>
     </nav>
+  </header>
+  <body>
+
     <h1>On The Map!</h1>
     <div class="maps" id="map"  >Map Box Goes here!</div>
     <!--Google Map's api-->
