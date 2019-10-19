@@ -49,7 +49,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   let templateVars = { api_key }
-  res.render("index", templateVars);
+  res.render("users", templateVars);
 });
 
 app.listen(PORT, () => {
