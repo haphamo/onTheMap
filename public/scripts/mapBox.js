@@ -1,6 +1,7 @@
 //A hardcoded sample database
+//I tried to create a variable similar to the one on tweeter to access to help understand but the functions below are not using it
 mapsOfUser = [
-  { map1 : {//mapid maybe?
+  { map1 : {//map_id maybe?
     title: "First Map",
     markers: [
        {comment: "Toronto", coords: {lat: 43.6532, lng: -79.3832}},
@@ -10,46 +11,46 @@ mapsOfUser = [
     ]
   }}
 ]
-
-let markers = [
+//These are the variables that the functions below are using
+//A query would pull up the maps that the user has created/favourited
+//One Map created by user1
+let markersForMap1 = [
   {comment: "Toronto", coords: {lat: 43.6532, lng: -79.3832}},
   {comment: "Missisauga", coords: { lat: 43.5890, lng: -79.6441}},
   {comment: "Vaughan", coords: {lat: 43.8563, lng: -79.5085 }},
   {comment: "Richmond Hill", coords: {lat: 43.8828, lng: -79.4403 }},
 ]
+
+//Map 2 that the same user has created
+let markersforMap2 = [
+  {comment: "Toronto", coords: {lat: 43.6532, lng: -79.3832}},
+  {comment: "Missisauga", coords: { lat: 43.5890, lng: -79.6441}},
+  {comment: "Vaughan", coords: {lat: 43.8563, lng: -79.5085 }},
+  {comment: "Richmond Hill", coords: {lat: 43.8828, lng: -79.4403 }},
+]
+
 //initialize MAP
 function initMap() {
   //map options
   let options = {
     center: {lat: 43.6532, lng: -79.3832},
-    zoom: 8
+    zoom: 9
   }
-  //find map id to place map
-  let mapDiv = document.getElementById('map')
+
   //creating maps
-  let map = new google.maps.Map(mapDiv, options);
+  let map = new google.maps.Map(document.getElementById('map'), options);
+  let map2 = new google.maps.Map(document.getElementById('map2'), options);
 
-  // let marker = new google.maps.Marker({
-  //   position:{lat:43.6532,lng:-79.3832},
-  //   map:map,
-  //   //title: "Toronto"
-  // });
-  // let comment = "Toronto"
-
-  // var infowindow = new google.maps.InfoWindow({
-  //   content: comment
-  // });
-  //creates listener to open the comment for the marker
-  // marker.addListener('click', function() {
-  //   infowindow.open(map, marker);
-  // });
-
-  //create loop
-  for(const marker of markers) {
-    addMarkers(marker)
+  //create loop for first map
+  for(const marker of markersForMap1) {
+    addMarkers1(marker)
+  }
+  //loop for second map
+  for(const marker of markersForMap2) {
+    addMarkers2(marker)
   }
 
-  function addMarkers(data) {
+  function addMarkers1(data) {
     let marker = new google.maps.Marker({
       position: data.coords,
       map: map
@@ -60,6 +61,22 @@ function initMap() {
       });
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
+      });
+    }
+  }
+
+
+  function addMarkers2(data) {
+    let marker = new google.maps.Marker({
+      position: data.coords,
+      map: map2
+    });
+    if(data.comment){
+      let infoWindow = new google.maps.InfoWindow({
+        content:data.comment
+      });
+      marker.addListener('click', function(){
+        infoWindow.open(map2, marker);
       });
     }
   }
