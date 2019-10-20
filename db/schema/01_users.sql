@@ -13,7 +13,7 @@ CREATE TABLE maps (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title TEXT NOT NULL,
-  descriptions TEXT NOT NULL,
+  description TEXT NOT NULL,
   is_favorite BOOLEAN NOT NULL DEFAULT FALSE
 );
 
