@@ -21,7 +21,18 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  return router;
+
+  // GETS users maps page
+  router.get("/maps", (req, res) => {
+
+  });
+
+  // GETS users favorites page
+  router.get("/favorites", (req, res) => {
+
+  });
+
+   return router;
 };
 
 
