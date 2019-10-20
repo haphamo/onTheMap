@@ -3,7 +3,7 @@ VALUES (1, 'Avijit Choudhury', 'avijit.choudhury24@gmail.com', 'password'),
 (2, 'Ha Pham', 'hapham0392@gmail.com', 'password'),
 (3, 'Jordan Owens', 'jordanowens86@gmail.com', 'password');
 
-INSERT INTO maps (id, title, descriptions, is_favorite)
+INSERT INTO maps (id, title, description, is_favorite)
 VALUES (1, 'Travel adventures', 'Places I have travelled to', true),
 (2, 'Dining', 'Places I ate at today', true),
 (3, 'Rare animal sightings', 'White squirrels discovered', false);
