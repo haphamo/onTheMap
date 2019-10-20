@@ -29,21 +29,38 @@ function initMap() {
   //creating maps
   let map = new google.maps.Map(mapDiv, options);
 
-  let marker = new google.maps.Marker({
-    position:{lat:43.6532,lng:-79.3832},
-    map:map,
-    //title: "Toronto"
-  });
-  let comment = "Toronto"
+  // let marker = new google.maps.Marker({
+  //   position:{lat:43.6532,lng:-79.3832},
+  //   map:map,
+  //   //title: "Toronto"
+  // });
+  // let comment = "Toronto"
 
-  var infowindow = new google.maps.InfoWindow({
-    content: comment
-  });
+  // var infowindow = new google.maps.InfoWindow({
+  //   content: comment
+  // });
   //creates listener to open the comment for the marker
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
+  // marker.addListener('click', function() {
+  //   infowindow.open(map, marker);
+  // });
 
+  //create loop
+  for(const marker of markers) {
+    addMarkers(marker)
+  }
 
-
+  function addMarkers(data) {
+    let marker = new google.maps.Marker({
+      position: data.coords,
+      map: map
+    });
+    if(data.comment){
+      let infoWindow = new google.maps.InfoWindow({
+        content:data.comment
+      });
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
+    }
+  }
 }
