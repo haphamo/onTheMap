@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/mapBox.js"></script>
+
   <!-- CSS Styles -->
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/index.css" type="text/css" />
 
   <title>Home Page</title>
 </head>
@@ -15,14 +19,29 @@
   <nav class="nav-bar">
     <a id="nav_logo" href="">OnTheMap</a>
     <div class="nav_div">
-      <a class="nav_path" href="">Home Page</a>
-      <a class="nav_path" href="">Favourites</a>
-      <a class="nav_path" href="">Users Page</a>
+      <a class="nav_path" action="/home_page" method="GET" href="home_page">Home Page</a>
+      <a class="nav_path" action="/favorites" method="GET" href="favorites">Favourites</a>
+      <a class="nav_path" action="/users" method="GET" href="users">Users Page</a>
+      <form action="/sessions/login" method="POST">
+        Email: <input type="text" email="email">
+        Password: <input type="text" password="password">
+        <input type="submit" value="Submit">
+      </form>
+
     </div>
   </nav>
 </header>
 
 <body>
-  <h1>This page must be renamed...it isn't the true home page...the url/ is the true home page to align with RESful routes</h1>
+  <h1>true home page</h1>
+  <div> Map One!
+      <div class="maps" id="map"></div>
+    </div>
+    <div> Map Two!
+        <div class="maps" id="map2"></div>
+    </div>
+    <!--Google Map's api-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
+    </script>
 </body>
 </html>

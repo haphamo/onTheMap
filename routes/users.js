@@ -7,10 +7,21 @@
 
 const express = require('express');
 const router  = express.Router();
+//connecting to database
+const { Pool } = require('pg');//getting modules to connect to database (bootcampx)
+
+const pool = new Pool({//creating instance of Pool
+  user: 'vagrant',
+  password: '123',
+  host: 'localhost',
+  database: 'midterm'
+});
+/////////////
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+  router.post("/1/maps", (req, res) => {
+    //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
+    db.query(`select * from users`)
       .then(data => {
         const users = data.rows;
         res.json({ users });
@@ -21,10 +32,13 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+//create function to get a user with id
 
-  // GETS users maps page
-  router.get("/maps", (req, res) => {
 
+// GETS users maps page
+router.post("/maps", (req, res) => {
+
+    res.send("This shows the users map");
   });
 
   // GETS users favorites page

@@ -17,6 +17,13 @@ const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+// //Creating pool instance
+// const pool = new Pool({//creating instance of Pool
+//   user: 'labber',
+//   password: '123',
+//   host: 'localhost',
+//   database: 'midterm'
+// });
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -35,24 +42,35 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
+//const widgetsRoutes = require("./routes/widgets");
 const mapsRoutes = require("./routes/maps");
-
+const sessionRoutes = require("./routes/sessions")
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
 app.use("/api/maps", mapsRoutes(db));
+app.use("/sessions", sessionRoutes(db));
+//app.use("/api/widgets", widgetsRoutes(db));
+// Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   let templateVars = { api_key }
+  console.log(db);
   res.render("home_page", templateVars);
 });
+//////////////////////////////////////////////////
 
+app.get('/users', (req, res) => {
+  res.render("users", )
+});
+
+
+app.get('/favorites', (req, res) => {
+  res.render("favorites")
+})
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
