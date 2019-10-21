@@ -50,7 +50,7 @@ app.use("/api/maps", mapsRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   let templateVars = { api_key }
-  res.render("users", templateVars);
+  res.render("home_page", templateVars);
 });
 
 app.listen(PORT, () => {
