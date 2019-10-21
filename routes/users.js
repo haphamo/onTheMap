@@ -10,13 +10,6 @@ const router  = express.Router();
 //connecting to database
 const { Pool } = require('pg');//getting modules to connect to database (bootcampx)
 
-const pool = new Pool({//creating instance of Pool
-  user: 'vagrant',
-  password: '123',
-  host: 'localhost',
-  database: 'midterm'
-});
-/////////////
 
 module.exports = (db) => {
   router.post("/1/maps", (req, res) => {
