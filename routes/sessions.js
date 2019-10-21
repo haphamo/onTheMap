@@ -7,11 +7,16 @@
 
 const express = require('express');
 const router  = express.Router();
+let cookieSession = require('cookie-session');
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ["123"]
+}));
 
 module.exports = (db) => {
   router.get("/register", (req, res) => {
-    //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
+
     db.query(`select * from users`)
     .then(data => {
       const users = data.rows;
@@ -32,6 +37,7 @@ module.exports = (db) => {
 
 // GETS users maps page
   router.post("/login", (req, res) => {
+    //set cookie once the email and username matches
 
     res.send("Should set a cookie if user and password match the db");
   });
