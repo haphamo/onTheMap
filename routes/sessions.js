@@ -42,14 +42,14 @@ module.exports = (db) => {
 
 // GETS users maps page
   router.post("/login", (req, res) => {
-    db.query(`SELECT * FROM users WHERE users.email = $1 AND users.password = $2;`, [req.body.email, req.body.password])
+    db.query(`SELECT * FROM users WHERE email = $1 AND password = $2;`, [req.body.email, req.body.password])
     .then(data => {
       if (data.rows[0]) {
         // sets the cookie user_id to the user's id
         req.session.user_id = data.rows[0].id
         console.log("req.session.user_id", data.rows[0].id)
         console.log('TEST: ', data.rows[0].id)
-        res.redirect('users')//if user is logged in send them to their users page
+        res.redirect("users")//if user is logged in send them to their users page
       } else {
         res.send("fields do not match")//else send them back to the home page
       }
@@ -59,8 +59,13 @@ module.exports = (db) => {
       console.log("got an error", err)
     })
   });
-
+  //logout
+  router.post("/logout", (req, res)=> {
+    req.session = null
+    res.redirect("/");
+  })
    return router;
 };
+
 
 
