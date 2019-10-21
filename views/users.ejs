@@ -23,10 +23,15 @@
 </header>
     <h1>On The Map! This is the users page</h1>
 
-
-
-
-
+    <div> Map One!
+        <div class="maps" id="map"></div>
+      </div>
+      <div> Map Two!
+          <div class="maps" id="map2"></div>
+      </div>
+      <!--Google Map's api-->
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
+      </script>
 
   </body>
 </html>

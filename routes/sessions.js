@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const api_key = process.env.API_KEY;
 
 //create a function that generates a random id
 let generateRandomString = function() {
@@ -34,21 +35,22 @@ module.exports = (db) => {
     });
   });
 //create function to get a user with id
-  router.post("/register", (req, res) => {
+  router.get("/register", (req, res) => {
     //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
     res.send("In here you will have cookies set up for new user and users saved into db")
 });
 
 
+
 // GETS users maps page
   router.post("/login", (req, res) => {
-    //set cookie once the email and username matches
-
     db.query(`SELECT * FROM users WHERE users.email = $1 AND users.password = $2;`, [req.body.email, req.body.password])
     .then(data => {
       if (data.rows[0]) {
-
-        res.render("users")//if user is logged in send them to their users page
+        // sets the cookie user_id to the user's id
+        req.session.user_id = data.rows[0].id
+        console.log("req.session.user_id", data.rows[0].id)
+        res.redirect('/')//if user is logged in send them to their users page
       } else {
         res.send("fields do not match")//else send them back to the home page
       }

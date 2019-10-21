@@ -65,7 +65,10 @@ app.use("/sessions", sessionRoutes(db));
 app.get("/", (req, res) => {
   let templateVars = { api_key }
   console.log(db);
-  res.render("/home_page", templateVars);
+  // Check if req.session.user_id exists
+  // if it does use the session id to query that users maps & pins
+  // then pass that information through templateVars for frontend to fetch with GoogleMaps
+  res.render("home_page", templateVars);
 });
 //////////////////////////////////////////////////
 
@@ -73,7 +76,9 @@ app.get('/users', (req, res) => {
   res.render("users", )
 });
 
-
+app.get("/register", (req, res) => {
+  res.render("register")
+})
 app.get('/favorites', (req, res) => {
   res.render("favorites")
 })
