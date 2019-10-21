@@ -1,12 +1,15 @@
 <header>
   <nav class="nav-bar">
     <a id="nav_logo" action="/home_page" href="home_page">OnTheMap</a>
+
     <div class="nav_div">
       <a class="nav_path" action="/favorites" method="GET" href="favorites">Favourites</a>
       <a class="nav_path" action="/users" method="GET" href="users">Users Page</a>
       <form method="POST" action="/sessions/logout">
         <button type="submit" name="logout">Logout</button>
       </form>
+    </div>
+        <div class="nav_div">
       <form action="/sessions/login" method="POST">
         Email: <input type="text" name="email">
         Password: <input type="text" name="password">
