@@ -21,24 +21,22 @@ let generateRandomString = function() {
 
 
 module.exports = (db) => {
-  router.get("/register", (req, res) => {
 
-    db.query(`select * from users`)
-    .then(data => {
-      const users = data.rows;
-      res.json({ users });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+  // GET users maps page
+  router.get("/users", (req, res) => {
+    let templateVars = { api_key }
+    res.render("users", templateVars)
   });
-//create function to get a user with id
-  router.get("/register", (req, res) => {
+ // GET users favorites page
+  router.get("/favorites", (req, res) => {
     //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
-    res.send("In here you will have cookies set up for new user and users saved into db")
+    res.render("favorites")
 });
+
+// GET users create page
+  router.get("/create_page", (req, res) => {
+    res.render("create_page")
+  })
 
 
 
@@ -50,7 +48,8 @@ module.exports = (db) => {
         // sets the cookie user_id to the user's id
         req.session.user_id = data.rows[0].id
         console.log("req.session.user_id", data.rows[0].id)
-        res.redirect('/')//if user is logged in send them to their users page
+        console.log('TEST: ', data.rows[0].id)
+        res.redirect('users')//if user is logged in send them to their users page
       } else {
         res.send("fields do not match")//else send them back to the home page
       }
