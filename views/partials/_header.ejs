@@ -1,21 +1,19 @@
 <header>
   <nav class="nav-bar">
-    <a id="nav_logo" href="">OnTheMap</a>
+    <a id="nav_logo" action="/home_page" href="home_page">OnTheMap</a>
     <div class="nav_div">
-      <a class="nav_path" action="/home_page" method="GET" href="home_page">Home Page</a>
       <a class="nav_path" action="/favorites" method="GET" href="favorites">Favourites</a>
       <a class="nav_path" action="/users" method="GET" href="users">Users Page</a>
+      <form method="POST" action="/sessions/logout">
+        <button type="submit" name="logout">Logout</button>
+      </form>
       <form action="/sessions/login" method="POST">
         Email: <input type="text" name="email">
         Password: <input type="text" name="password">
         <input type="submit" value="Submit">
       </form>
-      <form method="POST" action="/sessions/logout">
-        <button type="submit" name="logout">Logout</button>
+      <a class="nav_path" action="/register" method="GET" href="/register">Register</a>
       </form>
-        <a class="nav_path" action="/register" method="GET" href="/register">Register</a>
-      </form>
-
     </div>
   </nav>
 </header>

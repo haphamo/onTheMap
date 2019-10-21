@@ -38,6 +38,10 @@ module.exports = (db) => {
     res.render("create_page")
   })
 
+  router.get("/home_page", (req, res) => {
+    let templateVars = { api_key }
+    res.render("home_page", templateVars);
+  });
 
 
 // GETS users maps page
