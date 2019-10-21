@@ -21,25 +21,18 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  return router;
+
+  // GETS users maps page
+  router.get("/maps", (req, res) => {
+
+  });
+
+  // GETS users favorites page
+  router.get("/favorites", (req, res) => {
+
+  });
+
+   return router;
 };
 
-// module.exports = (db) => {
 
-//   // GET request for Users Page
-//   router.get("/index", (req, res => {
-//     console.log('This is the Users Page')
-//   }))
-
-//   // GET request for Favourites Page
-//   router.get("/favorites" (req, res => {
-//     console.log('This is the Favourites Page')
-//   }))
-
-//   // GET request for Create Page
-
-
-
-
-
-// };
