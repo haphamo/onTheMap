@@ -76,9 +76,7 @@ app.get('/users', (req, res) => {
   res.render("users", )
 });
 
-app.get("/register", (req, res) => {
-  res.render("register")
-})
+
 app.get('/favorites', (req, res) => {
   res.render("favorites")
 })
