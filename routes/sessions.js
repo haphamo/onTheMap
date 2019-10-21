@@ -71,10 +71,7 @@ module.exports = (db) => {
       console.log("got an error", err)
     })
   });
-  //users edit map
-  router.get("/edit", (req, res) => {
-    res.render("edit_page")
-  })
+
   //logout
   router.post("/logout", (req, res)=> {
     req.session = null
