@@ -4,29 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/scripts/mapBox.js"></script>
 
   <!-- CSS Styles -->
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
-
-  <title>Home Page</title>
+  <title>Register</title>
 </head>
+<body>
 <header>
   <% include ./partials/_header %>
 </header>
-<body>
-  <h1>true home page</h1>
-  <div> Map One!
-      <div class="maps" id="map"></div>
+
+<main>
+  <h1>Create Account</h1>
+  <form action="/register" method="POST">
+    <div>
+      <h3>Email Address</h3>
+      <input type="email" placeholder="Enter email">
     </div>
-    <div> Map Two!
-        <div class="maps" id="map2"></div>
+    <div>
+      <h3 id="passwordLength">Password</h3>
+      <input type="password" placeholder="Password">
     </div>
-    <!--Google Map's api-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
-    </script>
+    <div class="buttonDiv">
+      <button type="submit" >Register</button>
+    </div>
+  </form>
+
+</main>
 </body>
 </html>
