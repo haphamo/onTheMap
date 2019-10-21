@@ -75,14 +75,7 @@ app.get("/", (req, res) => {
 app.get('/register', (req, res) => {
   res.render("register")
 })
-// app.get('/users', (req, res) => {
-//   res.render("users", )
-// });
 
-
-app.get('/favorites', (req, res) => {
-  res.render("favorites")
-})
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
