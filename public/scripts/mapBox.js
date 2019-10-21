@@ -65,7 +65,6 @@ function initMap() {
     }
   }
 
-
   function addMarkers2(data) {
     let marker = new google.maps.Marker({
       position: data.coords,
