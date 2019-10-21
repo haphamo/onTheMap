@@ -75,9 +75,9 @@ app.get("/", (req, res) => {
 app.get('/register', (req, res) => {
   res.render("register")
 })
-app.get('/users', (req, res) => {
-  res.render("users", )
-});
+// app.get('/users', (req, res) => {
+//   res.render("users", )
+// });
 
 
 app.get('/favorites', (req, res) => {
