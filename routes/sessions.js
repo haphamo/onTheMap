@@ -35,10 +35,10 @@ module.exports = (db) => {
 
 // GET users create page
   router.get("/create_page", (req, res) => {
-    db.query(`SELECT pins.comment FROM pins;`)
-
-    .then(res => console.log('PIN INFO==========> ',res.rows))
-    res.render("create_page")
+    //db.query(`SELECT pins.comment FROM pins;`)
+    let templateVars = { api_key }
+    //.then(res => console.log('PIN INFO==========> ',res.rows))
+    res.render("create_page", templateVars)
   })
 
   // GET users edit page
