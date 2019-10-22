@@ -82,7 +82,9 @@ function initMap() {
 }
 //declaring a function which retrieves pin info
 const getPins = function(data) {
-  // const values = ;
+  let coords = db.query(`SELECT pins.latitude, pins.longitude FROM pins;`);
+  let comment = db.query(`SELECT pins.comment FROM pins;`);
+
   return pool.query(`SELECT * FROM pins
   WHERE user_id = 1`, values)
 
@@ -90,4 +92,4 @@ const getPins = function(data) {
 }
 
 getPins().then(res => console.log(res))
-exports.getPins = getPins;
+module.exports =  { getPins };
