@@ -59,7 +59,7 @@ const sessionRoutes = require("./routes/sessions")
 app.use("/api/users", usersRoutes(db));
 app.use("/api/maps", mapsRoutes(db));
 app.use("/api/pins", pinsRoutes(db));
-app.use("/sessions", sessionRoutes(db));
+app.use("/", sessionRoutes(db));
 //app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
@@ -68,11 +68,15 @@ app.use("/sessions", sessionRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   let templateVars = { api_key }
+  if (req.session.user_id) {
+    res.render("users", templateVars)
+  } else {
   console.log(db);
   // Check if req.session.user_id exists
   // if it does use the session id to query that users maps & pins
   // then pass that information through templateVars for frontend to fetch with GoogleMaps
   res.render("home_page", templateVars);
+  }
 });
 //////////////////////////////////////////////////
 

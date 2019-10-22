@@ -11,23 +11,19 @@ const api_key = process.env.API_KEY;
 // const getPins = require('../scripts/mapBox');
 
 //create a function that generates a random id
-let generateRandomString = function() {
-  let randomId = "";
-  let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for (let i = 0; i < 6; i++) {
-    randomId += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return randomId;
-};
+// let generateRandomString = function() {
+//   let randomId = "";
+//   let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//   for (let i = 0; i < 6; i++) {
+//     randomId += possible.charAt(Math.floor(Math.random() * possible.length));
+//   }
+//   return randomId;
+// };
 
 
 module.exports = (db) => {
 
-  // GET users maps page
-  router.get("/users", (req, res) => {
-    let templateVars = { api_key }
-    res.render("users", templateVars)
-  });
+
  // GET users favorites page
   router.get("/favorites", (req, res) => {
     //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
@@ -35,13 +31,14 @@ module.exports = (db) => {
 });
 
 // GET users create page
-  router.get("/create_page", (req, res) => {
-    // db.query(`SELECT pins.comment FROM pins;`)
-   res.render("create_page")
+  router.get("/maps/create", (req, res) => {
+    let templateVars = { api_key }
+
+   res.render("create_page", templateVars)
   })
 
   // GET users edit page
-  router.get("/edit_page", (req, res) => {
+  router.get("/maps", (req, res) => {
     //query here to retreive data from database of where pins are placed
 
     let templateVars = { api_key }
@@ -49,14 +46,6 @@ module.exports = (db) => {
     console.log('getPins FUNCTION RESULT: ',res.rows);
     res.render("edit_page", templateVars)
   })
-
-  // GET home page
-  router.get("/")
-
-  router.get("/home_page", (req, res) => {
-    let templateVars = { api_key }
-    res.render("home_page", templateVars);
-  });
 
 
 // GETS users maps page
@@ -68,7 +57,7 @@ module.exports = (db) => {
         req.session.user_id = data.rows[0].id
         console.log("req.session.user_id", data.rows[0].id)
         console.log('TEST: ', data.rows[0].id)
-        res.redirect("users")//if user is logged in send them to their users page
+        res.redirect("/")//if user is logged in send them to their users page
       } else {
         res.send("fields do not match")//else send them back to the home page
       }
