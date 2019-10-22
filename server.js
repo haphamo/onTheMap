@@ -13,11 +13,13 @@ const app        = express();
 const morgan     = require('morgan');
 const api_key    = process.env.API_KEY;
 
+
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
+
 
 // //Creating pool instance
 // const pool = new Pool({//creating instance of Pool
@@ -78,6 +80,31 @@ app.get('/register', (req, res) => {
   res.render("register")
 })
 
+
+// const addUser = function (users) {
+
+//   return pool.query(`
+//   INSERT INTO users(name, email, password)
+//   VALUES($1, $2, $3) RETURNING *`,
+//   [users.full_name, users.email, users.password])
+//   .then(res => {
+//     console.log(users)
+//     return res.rows[0]
+//   }).catch(err => { return null; });
+// }
+
+app.post('/register', (req, res) => {
+  const user = req.body;
+  console.log(req.body)
+  db.query(`INSERT INTO users(full_name, email, password)
+  VALUES($1, $2, $3) RETURNING *`,
+    [user.full_name, user.email, user.password])
+    .then(rows => {
+      res.redirect("/sessions/users");
+    }).catch(err => console.log('error', err));
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
