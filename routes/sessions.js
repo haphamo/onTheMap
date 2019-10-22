@@ -35,6 +35,8 @@ module.exports = (db) => {
 
 // GET users create page
   router.get("/create_page", (req, res) => {
+    db.query(`SELECT * FROM pins`)
+    .then(res => console.log(res.rows))
     res.render("create_page")
   })
 
