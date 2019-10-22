@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/index.css" type="text/css" />
+  <!--JS-->
+  <script type="text/javascript" src="/scripts/mapBox.js"></script>
+   <!--Google Map's api-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
+  </script>
   <title>Edit your map</title>
 </head>
 
@@ -13,5 +19,13 @@
   <% include ./partials/_header %>
 </header>
   <h1>This is the edit page</h1>
+  <div class="title">Map 1 Created by User</div>
+  <div>
+    <a action="/sessions/edit"  method="GET"><div class="maps" id="map"></div></a>
+    <button type="submit">EDIT HERE!</button>
+  </div>
+  <div> Map Two!
+    <div class="maps" id="map2"></div>
+</div>
 </body>
 </html>

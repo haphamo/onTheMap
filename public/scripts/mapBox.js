@@ -80,3 +80,14 @@ function initMap() {
     }
   }
 }
+//declaring a function which retrieves pin info
+const getPins = function(data) {
+  // const values = ;
+  return pool.query(`SELECT * FROM pins
+  WHERE user_id = 1`, values)
+
+  //.then(res => res.rows[0]);
+}
+
+getPins().then(res => console.log(res))
+exports.getPins = getPins;

@@ -40,7 +40,9 @@ module.exports = (db) => {
 
   // GET users edit page
   router.get("/edit_page", (req, res) => {
-    res.render("edit_page")
+    //query here to retreive data from database of where pins are placed
+    let templateVars = { api_key }
+    res.render("edit_page", templateVars)
   })
 
   // GET home page
