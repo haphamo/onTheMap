@@ -44,6 +44,8 @@ module.exports = (db) => {
     //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
     res.render("favorites")
 });
+
+
   //editing specific map
   router.get("/maps/:mapId/edit", (req, res) => {
     //query to fetch mapId
