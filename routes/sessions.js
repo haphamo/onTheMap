@@ -38,6 +38,18 @@ module.exports = (db) => {
 
      res.render("create_page", templateVars)
     })
+    //User submits new map
+    router.post("/maps/create", (req, res) => {
+      //let templateVars = { api_key }
+      //insert data in this route
+      const userId = req.session.user_id
+      console.log("user_id", userId)
+      console.log("req.body", req.body)
+      db.query(`INSERT INTO maps (user_id, title, description)
+      VALUES ($1, $2, $3 ) RETURNING *`, [userId, req.body.title, req.body.description])
+
+     res.redirect("/")
+    })
 
  // GET users favorites page
   router.get("/maps/favorites", (req, res) => {

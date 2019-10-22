@@ -51,14 +51,19 @@ $( document ).ready(function() {
 
   $('#crt-maps-btn').on('click', (evt) => {
     const data = {
+      datatype: JSON,
       name: '',
       desc: '',
       markers: markers
     }
     // DO AN AJAX CALL TO BACKEND
     //BACKEND WILL DO THE QUERY
+    //debugger;
+    $.ajax('/maps/create', {method: 'POST', data: $(this).serialize()})
+    .then(res => window.location = "/maps")
 
     console.log(data)
-    alert("BUTTON WORKS????")
+
+    //alert("BUTTON WORKS????")
   })
 })
