@@ -50,11 +50,13 @@ app.use(express.static("public"));
 const usersRoutes = require("./routes/users");
 //const widgetsRoutes = require("./routes/widgets");
 const mapsRoutes = require("./routes/maps");
+const pinsRoutes = require("./routes/pins");
 const sessionRoutes = require("./routes/sessions")
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/maps", mapsRoutes(db));
+app.use("/api/pins", pinsRoutes(db));
 app.use("/sessions", sessionRoutes(db));
 //app.use("/api/widgets", widgetsRoutes(db));
 // Note: mount other resources here, using the same pattern above

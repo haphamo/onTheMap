@@ -12,6 +12,7 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/mapBox.js"></script>
 
 
 
@@ -26,13 +27,13 @@
     <form action="create_page" method="GET">
       <button type="submit">Create New Map</button>
     </form>
-      <div class="title">Map 1 Created by User</div>
+      <div class="title">Map 1 on User page</div>
       <div>
         <a action="/sessions/edit"  method="GET"><div class="maps" id="map"></div></a>
     </div>
     <div> Map Two!
       <div class="maps" id="map2"></div>
-    </div>
+    </div> -->
       <!--Google Map's api-->
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
       </script>

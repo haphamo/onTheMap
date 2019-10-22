@@ -10,7 +10,7 @@ const router  = express.Router();
 //connecting to database
 const { Pool } = require('pg');//getting modules to connect to database (bootcampx)
 
-
+//the user does not use this route, we created a session route once user logs in
 module.exports = (db) => {
   router.post("/1/maps", (req, res) => {
     //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
