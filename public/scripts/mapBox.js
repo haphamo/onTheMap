@@ -34,7 +34,7 @@ function initMap() {
   //map options
   let options = {
     center: {lat: 43.6532, lng: -79.3832},
-    zoom: 9
+    zoom: 17
   }
 
   //creating maps
@@ -46,9 +46,18 @@ function initMap() {
     addMarkers1(marker)
   }
   //loop for second map
-  for(const marker of markersForMap2) {
-    addMarkers2(marker)
-  }
+  // for(const marker of markersForMap2) {
+  //   addMarkers2(marker)
+  // }
+
+  fetch("/api/pins")
+  .then(resp => resp.json())
+  .then(data => {
+    for(const marker of data.pins) {
+      addMarkers2(marker)
+    }
+    return true
+  })
 
   function addMarkers1(data) {
     let marker = new google.maps.Marker({
@@ -81,15 +90,16 @@ function initMap() {
   }
 }
 //declaring a function which retrieves pin info
-const getPins = function(data) {
+const getPins = function() {
   let coords = db.query(`SELECT pins.latitude, pins.longitude FROM pins;`);
   let comment = db.query(`SELECT pins.comment FROM pins;`);
+  let mapOptions;
 
-  return pool.query(`SELECT * FROM pins
-  WHERE user_id = 1`, values)
+  mapOptions[comment];
+  mapOptions[coords];
 
-  //.then(res => res.rows[0]);
+  return mapOptions;
 }
 
-getPins().then(res => console.log(res))
-module.exports =  { getPins };
+// getPins().then(res => console.log(res))
+// exports.getPins =  getPins;

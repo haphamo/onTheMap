@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const api_key = process.env.API_KEY;
+// const getPins = require('../scripts/mapBox');
 
 //create a function that generates a random id
 let generateRandomString = function() {
@@ -35,16 +36,17 @@ module.exports = (db) => {
 
 // GET users create page
   router.get("/create_page", (req, res) => {
-    db.query(`SELECT pins.comment FROM pins;`)
-
-    .then(res => console.log('PIN INFO==========> ',res.rows))
-    res.render("create_page")
+    // db.query(`SELECT pins.comment FROM pins;`)
+   res.render("create_page")
   })
 
   // GET users edit page
   router.get("/edit_page", (req, res) => {
     //query here to retreive data from database of where pins are placed
+
     let templateVars = { api_key }
+
+    console.log('getPins FUNCTION RESULT: ',res.rows);
     res.render("edit_page", templateVars)
   })
 

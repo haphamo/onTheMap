@@ -8,8 +8,11 @@ module.exports = (db) => {
   // GETS user pins
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM pins;`)
-      .then(data => {
-        const pins = data.rows;
+    .then(data => data.rows.map(pin => {
+      return {comment: pin.comment,
+              coords: {lat: Number(pin.latitude),
+                       lng: Number(pin.longitude)}}}))
+      .then(pins => {
         res.json({ pins });
       })
       .catch(err => {
