@@ -27,16 +27,18 @@
     <form action="create_page" method="GET">
       <button type="submit" id="create-map">Create New Map</button>
     </form>
-      <div class="title">Map 1 on User page</div>
-      <div>
-        <a action="/sessions/edit"  method="GET"><div class="maps" id="map"></div></a>
+    <form action="/sessions/edit_page" method="GET">
+      <button>Map 1 Title</button>
+      <button>Map 1 Title</button>
+    </form>
+    <form> <!--Not sure what the route would be like here since it's going to the same route but with a differnet map id-->
+      <button>Map 2 Title</button>
+      <button>Map 2 Title</button>
+    </form>
+
     </div>
-    <div> Map Two!
-      <div class="maps" id="map2"></div>
-    </div> -->
       <!--Google Map's api-->
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
       </script>
-
   </body>
 </html>
