@@ -23,32 +23,40 @@ const api_key = process.env.API_KEY;
 
 module.exports = (db) => {
 
-
- // GET users favorites page
-  router.get("/favorites", (req, res) => {
-    //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
-    res.render("favorites")
-});
-
-// GET users create page
-  router.get("/maps/create", (req, res) => {
-    let templateVars = { api_key }
-
-   res.render("create_page", templateVars)
-  })
-
-  // GET users edit page
+  // List of all maps user has created
   router.get("/maps", (req, res) => {
-    //query here to retreive data from database of where pins are placed
+    //query here to retreive data from database of the maps of the user
 
     let templateVars = { api_key }
 
     console.log('getPins FUNCTION RESULT: ',res.rows);
     res.render("edit_page", templateVars)
   })
+  // GET users create page
+    router.get("/maps/create", (req, res) => {
+      let templateVars = { api_key }
+
+     res.render("create_page", templateVars)
+    })
+
+ // GET users favorites page
+  router.get("/maps/favorites", (req, res) => {
+    //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
+    res.render("favorites")
+});
+  //editing specific map
+  router.get("/maps/:mapId/edit", (req, res) => {
+    //query to fetch mapId
+    let templateVars = { api_key }
+    const mapId = req.params.mapId;
+    console.log("here", mapId)
+    db.query(`SELECT * FROM maps
+    WHERE maps.id = $1`, [mapId])
+    res.render("edit_page", templateVars)
+  });
 
 
-// GETS users maps page
+
   router.post("/login", (req, res) => {
     db.query(`SELECT * FROM users WHERE email = $1 AND password = $2;`, [req.body.email, req.body.password])
     .then(data => {
