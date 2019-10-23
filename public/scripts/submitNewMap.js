@@ -1,6 +1,7 @@
 //jQuery is clientside, queries on the database is server side
 //must use AJAX method to send data back to the server
 
+
 const markers = [];
 function initMap() {
   //hard coded options, still have to implement bounds.extend
@@ -50,18 +51,24 @@ $( document ).ready(function() {
 
 
   $('#crt-maps-btn').on('click', (evt) => {
+    debugger
+    evt.preventDefault();
     const data = {
       datatype: JSON,
-      name: $('input[name=title').val(),
-      desc: $('new-map-desc').val(),
+        title: $('input[name=title').val(),
+        description: $('input[name=description').val(),
       markers: markers
     }
     // DO AN AJAX CALL TO BACKEND
     //BACKEND WILL DO THE QUERY
     //debugger;
-    $.ajax('/maps/create', {method: 'POST', data: $(this).serialize()})
+    $.ajax('/maps/create', {method: 'POST', data: data})
     //.then(res => window.location = "/maps")
-    .then(res => console.log(data))
+    .then(res =>{
+      console.log(res);
+      window.location.href = '/';
+    })
+
     console.log(data)
 
     //alert("BUTTON WORKS????")

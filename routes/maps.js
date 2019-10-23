@@ -20,8 +20,12 @@ module.exports = (db) => {
   });
 
   // GETS create map page
-  router.get("/new", (req, res) => {
-
+  router.get("/:id", (req, res) => {
+    db.query(`SELECT * FROM pins
+    WHERE map_id = ${req.params.id};`)
+    .then(result => {
+    res.json( {result: result.rows})
+    })
   });
 
   // GETS edit map page
@@ -29,10 +33,7 @@ module.exports = (db) => {
 
   });
 
-  // GETS map view/show map page
-  router.get("/:id", (req, res) => {
 
-  });
 
   // POST edit map page
   router.post("/:id/edit", (req, res) => {

@@ -22,6 +22,6 @@ CREATE TABLE pins (
   id SERIAL PRIMARY KEY NOT NULL,
   map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
   comment TEXT,
-  latitude DECIMAL(6,4) NOT NULL,
-  longitude DECIMAL(6,4) NOT NULL
+  latitude DECIMAL NOT NULL,
+  longitude DECIMAL NOT NULL
 );

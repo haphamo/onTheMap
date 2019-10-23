@@ -5,9 +5,11 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+
 const express = require('express');
 const router  = express.Router();
 const api_key = process.env.API_KEY;
+
 
 module.exports = (db) => {
 
@@ -28,21 +30,35 @@ module.exports = (db) => {
     })
     //User submits new map
     router.post("/maps/create", async (req, res) => {
-      //let templateVars = { api_key }
-      //insert data in this route
-      //Must get oin data here as well
+      let templateVars = { api_key }
+      // insert data in this route
+      // Must get pin data here as well
+      //make a call to get lat lng from googlemap api
       const userId = req.session.user_id
       console.log("user_id", userId)
       console.log("req.body", req.body)
       try {
-        const res = await db.query(`INSERT INTO maps (user_id, title, description)
+        const result = await db.query(`INSERT INTO maps (user_id, title, description)
         VALUES ($1, $2, $3 ) RETURNING *`, [userId, req.body.title, req.body.description])
+        console.log(result.rows[0].id)
+        console.log(req.body)
 
+        //map_id, comment, latitute, longitude
+        let str = "VALUES ";
+        for (let pin of req.body.markers ) {
+          str+= `( ${result.rows[0].id}, 'PIN', ${pin.lat}, ${pin.lng}),`
+        }
+
+        str = str.slice(0, str.length -1) + ';';
+
+        console.log(str);
+        db.query('INSERT INTO pins (map_id, comment, latitude, longitude) ' + str).then( () => {
+          console.log("THINGS WORKED!!!!!");
+          res.json({status:'ok'});
+        })
       } catch (err) {
         console.error(err);
       }
-
-     res.redirect("/")
     })
 
  // GET users favorites page
@@ -88,3 +104,4 @@ module.exports = (db) => {
   })
    return router;
 };
+
