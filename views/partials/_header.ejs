@@ -4,7 +4,7 @@
 
     <div class="nav_div">
       <a class="nav_path" action="/favorites" method="GET" href="favorites">Favourites</a>
-      <a class="nav_path" action="/users" method="GET" href="users">My Maps</a>
+      <a class="nav_path" action="/users" method="GET" href="/maps">My Maps</a>
       <form method="POST" action="/logout">
         <button type="submit" name="logout">Logout</button>
       </form>
@@ -13,7 +13,7 @@
       <form action="/login" method="POST">
         Email: <input type="text" name="email">
         Password: <input type="password" name="password">
-        <input type="submit" value="Submit">
+        <button type="submit" name="login">Login</button>
       </form>
       <a class="nav_path" action="/register" method="GET" href="/register">Register</a>
       </form>

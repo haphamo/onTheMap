@@ -51,7 +51,7 @@ $( document ).ready(function() {
 
 
   $('#crt-maps-btn').on('click', (evt) => {
-    debugger
+    //debugger
     evt.preventDefault();
     const data = {
       datatype: JSON,
@@ -61,12 +61,13 @@ $( document ).ready(function() {
     }
     // DO AN AJAX CALL TO BACKEND
     //BACKEND WILL DO THE QUERY
-    //debugger;
+
     $.ajax('/maps/create', {method: 'POST', data: data})
     //.then(res => window.location = "/maps")
     .then(res =>{
       console.log(res);
-      window.location.href = '/maps';
+
+      window.location.href = '/maps/'+ res.mapId;
     })
 
     console.log(data)
