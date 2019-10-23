@@ -16,10 +16,7 @@ module.exports = (db) => {
   // List of all maps user has created
   router.get("/maps", (req, res) => {
     //query here to retreive data from database of the maps of the user
-
     let templateVars = { api_key }
-
-    //console.log('getPins FUNCTION RESULT: ',res.rows);
     res.render("edit_page", templateVars)
   })
   // GET users create page
