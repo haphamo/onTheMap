@@ -52,7 +52,7 @@ $( document ).ready(function() {
   $('#crt-maps-btn').on('click', (evt) => {
     const data = {
       datatype: JSON,
-      name: $('input[name=title]').val(),
+      name: $('input[name=title').val(),
       desc: $('new-map-desc').val(),
       markers: markers
     }

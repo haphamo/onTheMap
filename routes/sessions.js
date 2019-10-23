@@ -17,7 +17,7 @@ module.exports = (db) => {
 
     let templateVars = { api_key }
 
-    console.log('getPins FUNCTION RESULT: ',res.rows);
+    //console.log('getPins FUNCTION RESULT: ',res.rows);
     res.render("edit_page", templateVars)
   })
   // GET users create page
@@ -30,6 +30,7 @@ module.exports = (db) => {
     router.post("/maps/create", async (req, res) => {
       //let templateVars = { api_key }
       //insert data in this route
+      //Must get oin data here as well
       const userId = req.session.user_id
       console.log("user_id", userId)
       console.log("req.body", req.body)
