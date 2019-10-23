@@ -8,18 +8,6 @@
 const express = require('express');
 const router  = express.Router();
 const api_key = process.env.API_KEY;
-// const getPins = require('../scripts/mapBox');
-
-//create a function that generates a random id
-// let generateRandomString = function() {
-//   let randomId = "";
-//   let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-//   for (let i = 0; i < 6; i++) {
-//     randomId += possible.charAt(Math.floor(Math.random() * possible.length));
-//   }
-//   return randomId;
-// };
-
 
 module.exports = (db) => {
 
@@ -39,14 +27,19 @@ module.exports = (db) => {
      res.render("create_page", templateVars)
     })
     //User submits new map
-    router.post("/maps/create", (req, res) => {
+    router.post("/maps/create", async (req, res) => {
       //let templateVars = { api_key }
       //insert data in this route
       const userId = req.session.user_id
       console.log("user_id", userId)
       console.log("req.body", req.body)
-      db.query(`INSERT INTO maps (user_id, title, description)
-      VALUES ($1, $2, $3 ) RETURNING *`, [userId, req.body.title, req.body.description])
+      try {
+        const res = await db.query(`INSERT INTO maps (user_id, title, description)
+        VALUES ($1, $2, $3 ) RETURNING *`, [userId, req.body.title, req.body.description])
+
+      } catch (err) {
+        console.error(err);
+      }
 
      res.redirect("/")
     })
@@ -56,7 +49,6 @@ module.exports = (db) => {
     //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
     res.render("favorites")
 });
-
 
   //editing specific map
   router.get("/maps/:mapId/edit", (req, res) => {

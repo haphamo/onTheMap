@@ -52,18 +52,26 @@ $( document ).ready(function() {
   $('#crt-maps-btn').on('click', (evt) => {
     const data = {
       datatype: JSON,
-      name: '',
-      desc: '',
+      name: $('input[name=title]').val(),
+      desc: $('new-map-desc').val(),
       markers: markers
     }
     // DO AN AJAX CALL TO BACKEND
     //BACKEND WILL DO THE QUERY
     //debugger;
     $.ajax('/maps/create', {method: 'POST', data: $(this).serialize()})
-    .then(res => window.location = "/maps")
-
+    //.then(res => window.location = "/maps")
+    .then(res => console.log(data))
     console.log(data)
 
     //alert("BUTTON WORKS????")
   })
+
+  // $(function() {
+  //   const $form = $('#submit-new-map"')
+  //   $form.submit(function(e) {
+  //     e.preventDefault();
+
+  //   })
+  // });
 })
