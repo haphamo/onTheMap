@@ -19,13 +19,19 @@
   <% include ./partials/_header %>
 </header>
   <h1>This is the users maps</h1>
-  <div class="title">Map 1 Created by User</div>
-  <div>
-    <a action="/sessions/edit"  method="GET"><div class="maps" id="map"></div></a>
-    <button type="submit">EDIT HERE!</button>
+
+  <div id="map-container">
+    <div id="user_map" class="maps">
+
+    </div>
+    <div class="map_title">
+      <h2>title goes here</h2>
+    </div>
+    <div>
+      <h2>description</h2>
+    </div>
   </div>
-  <div> Map Two!
-    <div class="maps" id="map2"></div>
-</div>
+
+
 </body>
 </html>
