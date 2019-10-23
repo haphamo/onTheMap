@@ -1,33 +1,3 @@
-//A hardcoded sample database
-//I tried to create a variable similar to the one on tweeter to access to help understand but the functions below are not using it
-mapsOfUser = [
-  { map1 : {//map_id maybe?
-    title: "First Map",
-    markers: [
-       {comment: "Toronto", coords: {lat: 43.6532, lng: -79.3832}},
-       {comment: "Missisauga", coords: { lat: 43.5890, lng: -79.6441}},
-       {comment: "Vaughan", coords: {lat: 43.8563, lng: -79.5085 }},
-       {comment: "Richmond Hill", coords: {lat: 43.8828, lng: -79.4403 }},
-    ]
-  }}
-]
-//These are the variables that the functions below are using
-//A query would pull up the maps that the user has created/favourited
-//One Map created by user1
-let markersForMap1 = [
-  {comment: "Toronto", coords: {lat: 43.6532, lng: -79.3832}},
-  {comment: "Missisauga", coords: { lat: 43.5890, lng: -79.6441}},
-  {comment: "Vaughan", coords: {lat: 43.8563, lng: -79.5085 }},
-  {comment: "Richmond Hill", coords: {lat: 43.8828, lng: -79.4403 }},
-]
-
-//Map 2 that the same user has created
-let markersforMap2 = [
-  {comment: "Toronto", coords: {lat: 43.6532, lng: -79.3832}},
-  {comment: "Missisauga", coords: { lat: 43.5890, lng: -79.6441}},
-  {comment: "Vaughan", coords: {lat: 43.8563, lng: -79.5085 }},
-  {comment: "Richmond Hill", coords: {lat: 43.8828, lng: -79.4403 }},
-]
 
 //initialize MAP
 function initMap() {

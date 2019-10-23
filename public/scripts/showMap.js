@@ -58,36 +58,42 @@
 //   loadMaps();
 
 // })
+
 let map;
-markers = []
+markers = [];
+
 function initMap() {
   //map options
   let options = {
     center: {lat: 43.6532, lng: -79.3832},
-    zoom: 17
+    zoom: 11
   }
 
   //creating maps
   map = new google.maps.Map(document.getElementById('map-container'), options);
-  // let map2 = new google.maps.Map(document.getElementById('map2'), options);
+  // latLng = new google.maps.LatLng(43.6532, -79.3832)
+  // console.log(markers)
+  // //create loop for first map
+  // // for(const marker of markers) {
+  // //   addMarkers(marker)
+  // // }
 
-  //create loop for first map
-  // for(const marker of markersForMap1) {
-  //   addMarkers1(marker)
-  // }
-  //loop for second map
-  // for(const marker of markersForMap2) {
-  //   addMarkers2(marker)
-  // }
+  // let marker = new google.maps.Marker({
+  //   position: latLng,
+  //   map: map
+  // });
+  // marker.setMap(map);
 
-  fetch("/api/pins")
-  .then(resp => resp.json())
-  .then(data => {
-    for(const marker of data.pins) {
-      // addMarkers2(marker)
-    }
-    return true
-  })
+
+
+  // fetch("/api/pins")
+  // .then(resp => resp.json())
+  // .then(data => {
+  //   for(const marker of data.pins) {
+  //     // addMarkers2(marker)
+  //   }
+  //   return true
+  // })
 
   // function addMarkers1(data) {
   //   let marker = new google.maps.Marker({
@@ -132,9 +138,26 @@ $(() => {
       //.then(res => window.location = "/maps")
       .then(res =>{
         console.log(map)
-        console.log(res);
+        console.log(res.result[0].latitude);
+        temp = {lat: parseFloat(res.result[0].latitude), lng: parseFloat(res.result[0].longitude)};
+        markers.push(temp);
+        temp2 = {lat: parseFloat(res.result[1].latitude), lng: parseFloat(res.result[1].longitude)};
+        markers.push(temp2);
+        console.log("markers", markers[0]);
+        console.log("gthis one", markers[0].lat)
+        latLng = new google.maps.LatLng(markers[0].lat, markers[0].lng)
+  console.log(markers)
+  //create loop for first map
+  // for(const marker of markers) {
+  //   addMarkers(marker)
+  // }
+
+  let marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+  marker.setMap(map);
         //window.location.href = '/maps';
       })
-
 
 })
