@@ -71,21 +71,6 @@ function initMap() {
 
   //creating maps
   map = new google.maps.Map(document.getElementById('map-container'), options);
-  // latLng = new google.maps.LatLng(43.6532, -79.3832)
-  // console.log(markers)
-  // //create loop for first map
-  // // for(const marker of markers) {
-  // //   addMarkers(marker)
-  // // }
-
-  // let marker = new google.maps.Marker({
-  //   position: latLng,
-  //   map: map
-  // });
-  // marker.setMap(map);
-
-
-
   // fetch("/api/pins")
   // .then(resp => resp.json())
   // .then(data => {
@@ -110,20 +95,6 @@ function initMap() {
   //   }
   // }
 
-  // function addMarkers2(data) {
-  //   let marker = new google.maps.Marker({
-  //     position: data.coords,
-  //     map: map2
-  //   });
-  //   if(data.comment){
-  //     let infoWindow = new google.maps.InfoWindow({
-  //       content:data.comment
-  //     });
-  //     marker.addListener('click', function(){
-  //       infoWindow.open(map2, marker);
-  //     });
-  //   }
-  // }
 }
 
 
@@ -133,31 +104,21 @@ $(() => {
   let url = $(location).attr('href'),
     parts = url.split("/"),
     last_part = parts[parts.length-1];
-  console.log(last_part)
+  //console.log(last_part)
   $.ajax(`/api/maps/${last_part}`, {method: 'get'})
       //.then(res => window.location = "/maps")
       .then(res =>{
         console.log(map)
-        console.log(res.result[0].latitude);
-        temp = {lat: parseFloat(res.result[0].latitude), lng: parseFloat(res.result[0].longitude)};
-        markers.push(temp);
-        temp2 = {lat: parseFloat(res.result[1].latitude), lng: parseFloat(res.result[1].longitude)};
-        markers.push(temp2);
-        console.log("markers", markers[0]);
-        console.log("gthis one", markers[0].lat)
-        latLng = new google.maps.LatLng(markers[0].lat, markers[0].lng)
-  console.log(markers)
-  //create loop for first map
-  // for(const marker of markers) {
-  //   addMarkers(marker)
-  // }
+        console.log("res.result", res.result);
+        res.result.forEach(element => {
+          let latLng = new google.maps.LatLng(parseFloat(element.latitude), parseFloat(element.longitude))
+          let marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          })
+          marker.setMap(map);
+        });
 
-  let marker = new google.maps.Marker({
-    position: latLng,
-    map: map
-  });
-  marker.setMap(map);
-        //window.location.href = '/maps';
-      })
+        })
 
 })

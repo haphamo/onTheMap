@@ -69,16 +69,16 @@ module.exports = (db) => {
     res.render("favorites")
 });
 
-  // //editing specific map
-  // router.get("/maps/:mapId/edit", (req, res) => {
-  //   //query to fetch mapId
-  //   let templateVars = { api_key }
-  //   const mapId = req.params.mapId;
-  //   console.log("here", mapId)
-  //   db.query(`SELECT * FROM maps
-  //   WHERE maps.id = $1`, [mapId])
-  //   res.render("edit_page", templateVars)
-  // });
+  //editing specific map
+  router.get("/maps/:mapId/edit", (req, res) => {
+    //query to fetch mapId
+    let templateVars = { api_key }
+    const mapId = req.params.mapId;
+    console.log("here", mapId)
+    db.query(`SELECT * FROM maps
+    WHERE maps.id = $1`, [mapId])
+    res.render("edit_page", templateVars)
+  });
 
   router.post("/login", (req, res) => {
     db.query(`SELECT * FROM users WHERE email = $1 AND password = $2;`, [req.body.email, req.body.password])
