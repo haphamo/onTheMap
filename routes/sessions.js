@@ -17,7 +17,8 @@ module.exports = (db) => {
   router.get("/maps", (req, res) => {
     //query here to retreive data from database of the maps of the user
     let templateVars = { api_key }
-    res.render("edit_page", templateVars)
+    console.log('template vars!',templateVars)
+    res.render("users_maps", templateVars)
   })
   // GET users create page
     router.get("/maps/create", (req, res) => {
@@ -25,6 +26,13 @@ module.exports = (db) => {
 
      res.render("create_page", templateVars)
     })
+
+    router.get("/maps/:id", (req, res) => {
+      //query here to retreive data from database of the maps of the user
+      let templateVars = { api_key }
+      res.render("users_maps", templateVars)
+    })
+
     //User submits new map
     router.post("/maps/create", async (req, res) => {
       let templateVars = { api_key }
