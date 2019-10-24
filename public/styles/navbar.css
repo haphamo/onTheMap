@@ -8,6 +8,8 @@
   left: 0;
   justify-content: space-between;
   font-size: 20px;
+  z-index: 10;
+
 }
 
 .nav_logo {
