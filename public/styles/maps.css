@@ -88,6 +88,16 @@ body {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.fa-bookmark {
+  font-size: 2rem;
+  color:white;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+
+
 
 
 
