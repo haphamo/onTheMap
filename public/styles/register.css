@@ -1,0 +1,48 @@
+html {
+  height: 100%;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-top: 200px;
+}
+
+
+.main_registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+  height: 500px;
+  width: 500px;
+  z-index: -1;
+}
+
+.main_registration h1 {
+  margin: 0;
+}
+
+.full_name, .email_address, .password, .buttonDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  font-size: 18px;
+}
+
+
+input {
+  height: 26px;
+  width: 190px;
+}
+
+.buttonDiv button {
+  height: 40px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+
+

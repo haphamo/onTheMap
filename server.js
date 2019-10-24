@@ -67,7 +67,7 @@ app.use("/", sessionRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  let templateVars = { api_key }
+  let templateVars = { api_key, user_id: req.session.user_id }
   if (req.session.user_id) {
     res.render("users", templateVars)
   } else {
@@ -81,7 +81,7 @@ app.get("/", (req, res) => {
 //////////////////////////////////////////////////
 
 app.get('/register', (req, res) => {
-  res.render("register")
+  res.render("register", { user_id: req.session.user_id})
 })
 
 

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+  <link rel="stylesheet" href="/styles/create.css" type="text/css"/>
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -19,24 +20,30 @@
   </script>
 
 
-  <title>Create new map</title>
+  <title>Create New Map</title>
 </head>
 
 <body>
   <header>
     <% include ./partials/_header %>
   </header>
-  <h1>This is the create page</h1>
-  <div id="map-containter"><!--Markup for createMap element-->
-  <form action="/maps/create" method="POST">
-    <h2>Title</h2>
-      <input id="new-map-title" type="text" name="title" size=50 placeholder="Enter title">
-    <h3>Description</h3>
-      <input id="new-map-desc" type="text" name="description" placeholder="Description" size=100>
-      <input type="text" id="mapSearch" size=50 placeholder="search here">
-      <button id="crt-maps-btn">SUBMIT</button>
-    <div class="maps" id="map" ></div><!--map api goes here-->
-    </form>
+  <div class="pageTitle">Create a new map!</div>
+  <section class="createArea">
+    <div id="map-containter"><!--Markup for createMap element-->
+      <form class="formArea" action="/maps/create" method="POST">
+        <div class="title">
+          <h2>Title</h2>
+          <input id="new-map-title" type="text" name="title" size=50 placeholder="Enter title">
+        </div>
+        <div>
+          Description
+          <input id="new-map-desc" type="text" name="description" placeholder="Description" size=100>
+        </div>
+        <input type="text" id="mapSearch" size=50 placeholder="search here">
+        <button id="crt-maps-btn">SUBMIT</button>
+        <div class="maps" id="map" ></div><!--map api goes here-->
+      </form>
+  </section>
   </div>
 </body>
 </html>
