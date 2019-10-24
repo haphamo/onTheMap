@@ -103,14 +103,15 @@ function initMap() {
 
 
 $(() => {
-  console.log("loaded");
+  //console.log("loaded");
   let url = $(location).attr('href'),
     parts = url.split("/"),
-    last_part = parts[parts.length-1];
-  //console.log(last_part)
-  $.ajax(`/api/maps/${last_part}`, {method: 'get'})
-      //.then(res => window.location = "/maps")
-      .then(res =>{
+    mapId = parts[parts.length-1];
+  //console.log(mapId)
+  $.ajax(`/api/maps/${mapId}/pins`, {method: 'get'})
+  //.then(res => window.location = "/maps")
+  .then(res =>{
+        let pinMarkers = {};
         console.log(map)
         console.log("res.result", res.result);
         res.result.forEach(element => {
@@ -123,10 +124,27 @@ $(() => {
             map: map
           })
           marker.setMap(map);
+          pinMarkers[element.id] = marker;
+          $('#pin-list').append(`<li class="deleteMe"><button data-pinid="${element.id}">${element.comment}</button></li>`)
         });
         //map.fitBounds(bounds);
-      })
+        //delete event listener
+        $('.deleteMe button').click(function(){
+          const pinId = $(this).data('pinid');
+          const elt = $(this).parent();
+          $.ajax(`/api/maps/${mapId}/pins/${pinId}`, {method: 'delete'})
+          .then(() => {
+            elt.remove();
+            const marker = pinMarkers[pinId];
+            marker.setMap(null)
+            delete pinMarkers[pinId]
+            return true;
+          })
 
+        })
+        return true;
+
+      })
 
 })
 

@@ -8,11 +8,10 @@ module.exports = (db) => {
   // GETS user maps page
   router.get("/", (req, res) => {
     let user = req.session.user_id;
-    db.query(`SELECT * FROM maps WHERE maps.user_id = ${user};`)
-      .then(data => {
-        const maps = data.rows;
-        res.json({ maps });
-      })
+    db.query(`SELECT * FROM maps`)
+    .then(result => {
+    res.json( {result: result.rows})
+    })
       .catch(err => {
         res
           .status(500)
@@ -20,18 +19,24 @@ module.exports = (db) => {
       });
   });
 
-  // GETS one specific map
-  router.get("/:id", (req, res) => {
+  // gets all pins for specific map
+  router.get("/:id/pins", (req, res) => {
     db.query(`SELECT * FROM pins
-    WHERE map_id = ${req.params.id};`)
+    WHERE map_id = $1;`, [req.params.id])
     .then(result => {
     res.json( {result: result.rows})
     })
+    .catch(err => res.status(500).send(err))
   });
 
-  // GETS edit map page
-  router.get("/:id/edit", (req, res) => {
+  // only show data for specfic pin
+  router.delete("/:mapid/pins/:pinId", (req, res) => {
 
+    db.query(`DELETE from pins WHERE id = $1;`, [req.params.pinId])
+    .then(result => {
+    res.json( {result: result.rows})
+    })
+    .catch(err => res.status(500).send(err))
   });
 
   // POST edit map page

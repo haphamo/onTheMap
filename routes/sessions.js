@@ -28,6 +28,8 @@ module.exports = (db) => {
 
     router.get("/maps/:id", (req, res) => {
       //query here to retreive data from database of the maps of the user
+
+      //console.log("here", res )
       let templateVars = { api_key }
       res.render("map_view", templateVars)//renders the specfic
     })
@@ -35,9 +37,7 @@ module.exports = (db) => {
     //User submits new map
     router.post("/maps/create", async (req, res) => {
       let templateVars = { api_key }
-      // insert data in this route
-      // Must get pin data here as well
-      //make a call to get lat lng from googlemap api
+
       const userId = req.session.user_id
       console.log("user_id", userId)
       console.log("req.body", req.body)
@@ -59,7 +59,22 @@ module.exports = (db) => {
       }
     })
 
-  router.post("/login", (req, res) => {
+    //route to delete specific pin
+    router.post("/maps/:id/pins/:id", (req, res) => {
+
+
+      try {
+
+        console.log(req.body)
+        console.log("THINGS WORKED!!!!!");
+        //res.json({status:'ok', mapId: result.rows[0].id});
+      } catch (err) {
+        console.error(err);
+      }
+    })
+
+
+    router.post("/login", (req, res) => {
     db.query(`SELECT * FROM users WHERE email = $1 AND password = $2;`, [req.body.email, req.body.password])
     .then(data => {
       if (data.rows[0]) {

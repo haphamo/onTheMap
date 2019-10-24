@@ -1,4 +1,4 @@
-// All routes in this file are mounted onto url/maps/...
+// this route shows all the pins
 
 const express = require('express');
 const router  = express.Router();
