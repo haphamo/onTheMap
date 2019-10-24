@@ -21,17 +21,21 @@
   <% include ./partials/_header %>
 </header>
   <h1>view a map on this page</h1>
+  <input type="text" id="mapSearch" size=50 placeholder="search here">
   <section id="map-container" class="maps">
+
     <div class="map-container" class="maps"></div>
   </section>
-  <div class="editBox"> WHich pins do you want to delete !</div>
+  <div class="editBox"> Delete Pins !</div>
   <div>
-
-      <ul id="pin-list"></ul>
-
+   <ul id="pin-list" style="list-style-type:none"></ul>
   </div>
-
-
+  <div>
+      <button id="addMarker">Add new Markers!</button>
+  </div>
+  <div>
+      <button id="deleteMap" data-map-id=<%= mapid %>>Delete Map</button>
+  </div>
 
 
 

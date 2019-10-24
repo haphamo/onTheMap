@@ -125,11 +125,11 @@ $(() => {
           })
           marker.setMap(map);
           pinMarkers[element.id] = marker;
-          $('#pin-list').append(`<li class="deleteMe"><button data-pinid="${element.id}">${element.comment}</button></li>`)
+          $('#pin-list').append(`<li class="deletePin"><button data-pinid="${element.id}">${element.comment}</button></li>`)
         });
         //map.fitBounds(bounds);
         //delete event listener
-        $('.deleteMe button').click(function(){
+        $('.deletePin button').click(function(){
           const pinId = $(this).data('pinid');
           const elt = $(this).parent();
           $.ajax(`/api/maps/${mapId}/pins/${pinId}`, {method: 'delete'})
@@ -140,8 +140,18 @@ $(() => {
             delete pinMarkers[pinId]
             return true;
           })
-
         })
+        //delete map listener
+        $('#deleteMap').click(function(){
+          const mapId = $(this).data('map-id');
+          $.ajax(`/api/maps/${mapId}`, {method: 'delete'})
+          .then((res) => {
+            console.log(res)
+            window.location.href = '/maps/'
+          })
+        })
+
+
         return true;
 
       })

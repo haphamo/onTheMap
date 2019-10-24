@@ -28,8 +28,18 @@ module.exports = (db) => {
     })
     .catch(err => res.status(500).send(err))
   });
+  // add new marker NOT COMPLETED YET...!
+  router.post("/:id/pins", (req, res) => {
+    db.query(`INSERT INTO * FROM pins
+    WHERE map_id = $1;`, [req.params.id])
+    .then(result => {
+    res.json( {result: result.rows})
+    })
+    .catch(err => res.status(500).send(err))
+  });
 
-  // only show data for specfic pin
+
+  // show pins for specific map delete path
   router.delete("/:mapid/pins/:pinId", (req, res) => {
 
     db.query(`DELETE from pins WHERE id = $1;`, [req.params.pinId])
@@ -39,10 +49,17 @@ module.exports = (db) => {
     .catch(err => res.status(500).send(err))
   });
 
-  // POST edit map page
-  router.post("/:id/edit", (req, res) => {
-    res.redirect("/maps");
+  //delete map route
+  router.delete("/:id", (req, res) => {
+
+    db.query(`DELETE from maps WHERE id = $1;`, [req.params.id])
+    .then(result => {
+      res.status(200).send()
+      res.redirect('/maps')
+    })
+    .catch(err => res.status(500).send(err))
   });
+
 
    return router;
 };
