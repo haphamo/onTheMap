@@ -14,13 +14,13 @@ module.exports = (db) => {
   // List of all maps user has created
   router.get("/maps", (req, res) => {
     //query here to retreive data from database of the maps of the user
-    let templateVars = { api_key }
+    let templateVars = { api_key, user_id: req.session.user_id }
     res.render("users_maps", templateVars)
 
   })
   // GET users create page
     router.get("/maps/create", (req, res) => {
-      let templateVars = { api_key }
+      let templateVars = { api_key, user_id: req.session.user_id }
       // console.log(req.session.user_id)
 
      res.render("create_page", templateVars)
@@ -34,7 +34,7 @@ module.exports = (db) => {
 
     //User submits new map
     router.post("/maps/create", async (req, res) => {
-      let templateVars = { api_key }
+      let templateVars = { api_key, user_id: req.session.user_id }
       // insert data in this route
       // Must get pin data here as well
       //make a call to get lat lng from googlemap api

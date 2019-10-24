@@ -1,18 +1,15 @@
   <nav class="nav-bar">
     <div class="nav_logo">
       <a  class="title_logo" action="/home_page" href="home_page">OnTheMap</a>
+      <% if (user_id !==undefined) { %>
       <a  action="/favorites" method="GET" href="favorites">Favourites</a>
       <a  action="/users" method="GET" href="users">My Maps</a>
     </div>
+    <form class="logout" method="POST" action="/logout">
+      <button type="submit" name="logout">Logout</button>
+    </form>
 
-    <!-- <button id="slide-toggle">LOGIN</button> -->
-    <!-- <div class="nav_div">
-      <a class="nav_path" action="/favorites" method="GET" href="favorites">Favourites</a>
-      <a class="nav_path" action="/users" method="GET" href="/maps">My Maps</a>
-      <form method="POST" action="/logout">
-        <button type="submit" name="logout">Logout</button>
-      </form>
-    </div> -->
+<% } else { %>
         <div class="nav_div">
       <form action="/login" method="POST" class="login">
         Email: <input type="text" name="email">
@@ -20,11 +17,8 @@
         <button type="submit" name="login">Login</button>
       </form>
     </div>
-
       <a class="nav_path" action="/register" method="GET" href="/register">Register</a>
+<% } %>
 
-    <form class="logout" method="POST" action="/logout">
-      <button type="submit" name="logout">Logout</button>
-    </form>
   </nav>
 
