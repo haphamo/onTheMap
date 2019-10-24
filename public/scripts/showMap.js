@@ -64,13 +64,16 @@ markers = [];
 
 function initMap() {
   //map options
-  let options = {
-    center: {lat: 43.6532, lng: -79.3832},
-    zoom: 11
-  }
+  // let options = {
+  //   center: {lat: 43.6532, lng: -79.3832},
+  //   zoom: 11
+  // }
 
   //creating maps
-  map = new google.maps.Map(document.getElementById('map-container'), options);
+  map = new google.maps.Map(document.getElementById('map-container'), {
+    center: {lat: 43.6532, lng: -79.3832},
+    zoom: 11
+  });
   // fetch("/api/pins")
   // .then(resp => resp.json())
   // .then(data => {
@@ -111,14 +114,25 @@ $(() => {
         console.log(map)
         console.log("res.result", res.result);
         res.result.forEach(element => {
+
           let latLng = new google.maps.LatLng(parseFloat(element.latitude), parseFloat(element.longitude))
+          //let bounds = new google.maps.LatLngBounds();
+          //bounds.extend(parseFloat(element.latitude), parseFloat(element.longitude)).getPosition
           let marker = new google.maps.Marker({
             position: latLng,
             map: map
           })
           marker.setMap(map);
         });
+        //map.fitBounds(bounds);
+      })
 
-        })
 
 })
+
+// var bounds = new google.maps.LatLngBounds();
+// for (var i = 0; i < markers.length; i++) {
+//  bounds.extend(markers[i].getPosition());
+// }
+
+// map.fitBounds(bounds);
