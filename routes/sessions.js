@@ -29,7 +29,7 @@ module.exports = (db) => {
     router.get("/maps/:id", (req, res) => {
       //query here to retreive data from database of the maps of the user
       let templateVars = { api_key }
-      res.render("users_maps", templateVars)//renders the specfic
+      res.render("map_view", templateVars)//renders the specfic
     })
 
     //User submits new map
