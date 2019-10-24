@@ -7,7 +7,144 @@ function initMap() {
   //hard coded options, still have to implement bounds.extend
   const options = {
     center: {lat: 43.6532, lng: -79.3832},
-    zoom: 10
+    zoom: 10,
+    styles: [
+      {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [
+          {
+            "color": "#ffffff"
+          }
+        ]
+      },
+      {
+        "featureType": "all",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+          {
+            "color": "#000000"
+          },
+          {
+            "lightness": 13
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "featureType": "administrative",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#144b53"
+          },
+          {
+            "lightness": 14
+          },
+          {
+            "weight": 1.4
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+          {
+            "color": "#08304b"
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#0c4152"
+          },
+          {
+            "lightness": 5
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#0b434f"
+          },
+          {
+            "lightness": 25
+          }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+          {
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "featureType": "road.arterial",
+        "elementType": "geometry.stroke",
+        "stylers": [
+          {
+            "color": "#0b3d51"
+          },
+          {
+            "lightness": 16
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+          {
+            "color": "#000000"
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+          {
+            "color": "#146474"
+          }
+        ]
+      },
+      {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+          {
+            "color": "#021019"
+          }
+        ]
+      }
+    ]
   }
   let map = new google.maps.Map(document.getElementById('map'), options);
   //do a query to retreive lat lng positions to place markers
@@ -19,7 +156,7 @@ function initMap() {
   //   map: map
 
   // });
-
+  // <iframe src="https://snazzymaps.com/embed/194806" width="100%" height="400px" style="border:none;"></iframe>
 
   let searchBox = new google.maps.places.SearchBox(document.getElementById('mapSearch'));
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(document.getElementById('mapSearch'));
@@ -44,6 +181,7 @@ function initMap() {
           map.setZoom(10);
           console.log(markers);
       })
+
 }
 
 
