@@ -9,10 +9,12 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
   <link rel="stylesheet" href="/styles/maps.css" type="text/css" />
   <!--JS-->
-  <script type="text/javascript" src="/scripts/mapBox.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/mapBox.js"></script> -->
+  <script type="text/javascript" src="/scripts/showMap.js"></script>
    <!--Google Map's api-->
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
-  </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap&libraries=places" async defer>
+   </script>
   <title>Edit your map</title>
 </head>
 
@@ -63,7 +65,7 @@
       </div>
   </section>
 
-  <section class="mapContainer">
+  <section id="map-container" class="maps">
     <div class="mapBox">MAP 1 HERE</div>
   </section>
 

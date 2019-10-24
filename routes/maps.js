@@ -7,7 +7,7 @@ module.exports = (db) => {
 
   // GETS user maps page
   router.get("/", (req, res) => {
-    let user = req.session;
+    let user = req.session.user_id;
     db.query(`SELECT * FROM maps WHERE maps.user_id = ${user};`)
       .then(data => {
         const maps = data.rows;
@@ -20,7 +20,7 @@ module.exports = (db) => {
       });
   });
 
-  // GETS create map page
+  // GETS one specific map
   router.get("/:id", (req, res) => {
     db.query(`SELECT * FROM pins
     WHERE map_id = ${req.params.id};`)
@@ -33,8 +33,6 @@ module.exports = (db) => {
   router.get("/:id/edit", (req, res) => {
 
   });
-
-
 
   // POST edit map page
   router.post("/:id/edit", (req, res) => {

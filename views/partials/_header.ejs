@@ -21,10 +21,17 @@
 
     <!-- <button id="slide-toggle">LOGIN</button> -->
     <div class="nav_div">
+      <a class="nav_path" action="/favorites" method="GET" href="favorites">Favourites</a>
+      <a class="nav_path" action="/users" method="GET" href="/maps">My Maps</a>
+      <form method="POST" action="/logout">
+        <button type="submit" name="logout">Logout</button>
+      </form>
+    </div>
+        <div class="nav_div">
       <form action="/login" method="POST" class="login">
         Email: <input type="text" name="email">
         Password: <input type="password" name="password">
-        <input type="submit" value="Submit">
+        <button type="submit" name="login">Login</button>
       </form>
     </div>
 
@@ -34,9 +41,4 @@
       <button type="submit" name="logout">Logout</button>
     </form>
   </nav>
-
-<body>
-
-</body>
-</html>
 
