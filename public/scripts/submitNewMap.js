@@ -33,13 +33,13 @@ function initMap() {
 
           let bounds = new google.maps.LatLngBounds();
           let i, place;
-
+          console.log("places", places)
           for (i = 0; place = places[i]; i++) {
               bounds.extend(place.geometry.location);
               marker.setPosition(place.geometry.location);
           }
           map.fitBounds(bounds);
-          temp = {lat: marker.position.lat(), lng: marker.position.lng()};
+          temp = {lat: marker.position.lat(), lng: marker.position.lng(), comment: places[0].name};
           markers.push(temp);
           map.setZoom(10);
           console.log(markers);

@@ -48,18 +48,12 @@ module.exports = (db) => {
         console.log(req.body)
 
         //map_id, comment, latitute, longitude
-        let str = "VALUES ";
-        for (let pin of req.body.markers ) {
-          str+= `( ${result.rows[0].id}, 'PIN', ${pin.lat}, ${pin.lng}),`
-        }
-
-        str = str.slice(0, str.length -1) + ';';
-
-        console.log(str);
-        db.query('INSERT INTO pins (map_id, comment, latitude, longitude) ' + str).then( () => {
-          console.log("THINGS WORKED!!!!!");
-          res.json({status:'ok', mapId: result.rows[0].id});
-        })
+        await Promise.all(req.body.markers.map(pin =>
+          db.query('INSERT INTO pins (map_id, comment, latitude, longitude) values ($1, $2, $3, $4);',
+                   [result.rows[0].id, pin.comment, pin.lat, pin.lng]))
+        )
+        console.log("THINGS WORKED!!!!!");
+        res.json({status:'ok', mapId: result.rows[0].id});
       } catch (err) {
         console.error(err);
       }
