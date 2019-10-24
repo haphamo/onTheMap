@@ -1,0 +1,9 @@
+body {
+  /* background-color: white; */
+  background-image: url("media/mapWithPin.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+}

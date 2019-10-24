@@ -78,7 +78,8 @@ body{
 .header-content h1{
   font-size: 50px;
   margin-bottom: 0;
-}t
+  color: white;
+}
 
 .header-content p {
   font-size: 1.5rem;

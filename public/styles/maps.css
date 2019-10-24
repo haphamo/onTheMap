@@ -1,15 +1,27 @@
-* {
+/* * {
   border: 3px solid;
-}
+} */
 
 body {
-  background-color: white;
-  background-image: url("https://www.transparenttextures.com/patterns/fresh-snow.png");
+  /* background-color: white; */
+  background-image: url("media/mapWithPin.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
 }
+
+
+
 
 .createContainer {
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin-top: 8rem;
+  flex-wrap: wrap;
+
 
 }
 
@@ -26,11 +38,18 @@ body {
   display: flex;
   justify-content: center;
   border: 3px solid;
+  width: 100%;
+  margin-top: 2rem;
 }
 .mapBox {
   display: flex;
   height: 10rem;
   width: 80%;
+  justify-content: center;
+  align-items: center;
+  background-color: #34b3a0;
+  outline: none;
+
 }
 
 

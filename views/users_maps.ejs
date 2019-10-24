@@ -13,7 +13,7 @@
    <!--Google Map's api-->
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
   </script>
-  <title>Edit your map</title>
+  <title>My Maps</title>
 </head>
 
 <body>
@@ -52,19 +52,18 @@
   </div> -->
   <section>
     <header>
-      <% include ./partials/_header %>
+       <% include ./partials/_header %>
     </header>
-
   </section>
 
-  <section>
-    <div class="createContainer">
-        <a href="maps/create" class="btn1"> Create a new map! </a>
+  <section class="createContainer">
+    <div >
+        <a href="/maps/create" class="btn1"> Create a new map! </a>
       </div>
   </section>
 
   <section class="mapContainer">
-    <div class="mapBox">MAP 1 HERE</div>
+    <a href="/maps/25" class="mapBox">MAP 1 HERE</a>
   </section>
 
 

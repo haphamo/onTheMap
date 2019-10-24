@@ -7,8 +7,8 @@ module.exports = (db) => {
 
   // GETS user maps page
   router.get("/", (req, res) => {
-    let user = req.session;
-    db.query(`SELECT * FROM maps WHERE maps.user_id = ${user};`)
+    // let user = req.session;
+    db.query(`SELECT * FROM maps WHERE maps.user_id = 1;`)
       .then(data => {
         const maps = data.rows;
         res.json({ maps });
