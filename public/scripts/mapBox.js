@@ -93,3 +93,23 @@ function initMap() {
 
 // getPins().then(res => console.log(res))
 // exports.getPins =  getPins;
+// $(document).ready(function () {
+//   $(".slide-toggle").click(function () {
+//     if ($(".nav_div").css('display') === "none") {
+//       $('.nav_div').slideDown('slow');
+//     } else {
+//       $('.nav_div').slideUp('slow')
+//     }
+//     $('.login').focus()
+//   })
+// });
+
+$(document).ready(function () {
+
+  $("#slide-toggle").on('click', function () {
+    $(".nav_div").slideToggle('fast', function () {
+      if ($(this).is(':visible'))
+      $(this).css('display', 'flex');
+    });
+  });
+})
