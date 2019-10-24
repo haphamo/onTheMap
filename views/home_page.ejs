@@ -11,6 +11,7 @@
   <!-- CSS Styles -->
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
 
   <title>Home Page</title>
 </head>
@@ -18,8 +19,27 @@
   <% include ./partials/_header %>
 </header>
 <body>
-<main>
+  <header class="v-header container">
+    <div class="fullscreen-video-wrap">
+      <video src="/styles/onTheMap.mov" type="video/mp4" autoplay="true" loop="true" muted>
+      </video>
+    </div>
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <h1>Hello Everyone</h1>
+      <p>On The Map allows you to make custom maps and drop pins on all of your favourite locations.
+        Want to keep track of all the places you've travelled? Or maybe you don't want to forget where
+        that perfect photo op was. Look no further, On The Map is here!
+      </p>
+        <a href="#" class="btn"> Let's get started! </a>
 
-</main>
+    </div>
+
+    <!-- <p>About us....you can create maps and drop pins to your</p>
+    <p>favourite locations</p>
+    <p>blah blah blah</p> -->
+
+  </header>
+
 </body>
 </html>

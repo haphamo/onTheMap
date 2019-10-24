@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css"/>
+  <link rel="stylesheet" href="/styles/maps.css" type="text/css" />
   <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <!-- <script type="text/javascript" src="/scripts/mapBox.js"></script> -->
@@ -17,20 +19,55 @@
 </head>
 
 <body>
-<header>
+<!-- <header>
   <% include ./partials/_header %>
-</header>
-  <h1>This is the users maps</h1>
-  <a href="/maps/create">
-    <button>CREATE NEW MAP</button>
-  </a>
-  <div class="outter-div">
+</header> -->
+  <!-- <h1>This is the users maps</h1>
 
-      <span id="map-container" class="maps">
-      </span>
-      <span>Hello world</span>
 
-  </div>
+    <a href="maps/create">Create New Map</a>
+
+    <div class="display-maps">
+    <form action="/edit_page" method="GET">
+
+      <a href="/maps/25" class="ma-title">Map 1 Title</a>
+      <a href="/maps/25">Map 1 description</a>
+    </form>
+    <form>
+
+      <a href="" class="map-title">Map 2 Title</a>
+      <a href="">Map 2 Description</a>
+    </form>
+
+    </div>
+
+  <div class="map-container" action="/maps" method="GET">
+    <div id="user_map" class="maps">
+
+    </div>
+    <div class="map_title">
+      <h2>title goes here</h2>
+    </div>
+    <div>
+      <h2>description</h2>
+    </div>
+  </div> -->
+  <section>
+    <header>
+      <% include ./partials/_header %>
+    </header>
+
+  </section>
+
+  <section>
+    <div class="createContainer">
+        <a href="maps/create" class="btn1"> Create a new map! </a>
+      </div>
+  </section>
+
+  <section id="map-container" class="mapContainer">
+    <div class="mapBox">MAP 1 HERE</div>
+  </section>
 
 
 </body>

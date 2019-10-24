@@ -16,10 +16,12 @@ module.exports = (db) => {
     //query here to retreive data from database of the maps of the user
     let templateVars = { api_key }
     res.render("users_maps", templateVars)
+
   })
   // GET users create page
     router.get("/maps/create", (req, res) => {
       let templateVars = { api_key }
+      // console.log(req.session.user_id)
 
      res.render("create_page", templateVars)
     })
@@ -63,23 +65,6 @@ module.exports = (db) => {
       }
     })
 
- // GET users favorites page
-  router.get("/maps/favorites", (req, res) => {
-    //check if user exists, if not redirect to homepage otherwise render /users/:id/maps
-    res.render("favorites")
-});
-
-  //editing specific map
-  router.get("/maps/:mapId/edit", (req, res) => {
-    //query to fetch mapId
-    let templateVars = { api_key }
-    const mapId = req.params.mapId;
-    console.log("here", mapId)
-    db.query(`SELECT * FROM maps
-    WHERE maps.id = $1`, [mapId])
-    res.render("edit_page", templateVars)
-  });
-
   router.post("/login", (req, res) => {
     db.query(`SELECT * FROM users WHERE email = $1 AND password = $2;`, [req.body.email, req.body.password])
     .then(data => {
@@ -104,6 +89,18 @@ module.exports = (db) => {
     req.session = null
     res.redirect("/");
   })
+
+
+    // //editing specific map
+  // router.get("/maps/:mapId/edit", (req, res) => {
+  //   //query to fetch mapId
+  //   let templateVars = { api_key }
+  //   const mapId = req.params.mapId;
+  //   console.log("here", mapId)
+  //   db.query(`SELECT * FROM maps
+  //   WHERE maps.id = $1`, [mapId])
+  //   res.render("edit_page", templateVars)
+  // });
    return router;
 };
 
