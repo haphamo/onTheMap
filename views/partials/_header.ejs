@@ -10,7 +10,7 @@
     </form>
 
 <% } else { %>
-        <div class="nav_div">
+    <div class="nav_div">
       <form action="/login" method="POST" class="login">
         Email: <input type="text" name="email">
         Password: <input type="password" name="password">
@@ -18,7 +18,10 @@
       </form>
     </div>
 
-      <a class="nav_path" action="/register" method="GET" href="/register">Register</a>
+    <div class="nav_path">
+      <a action="/register" method="GET" href="/register">Register</a>
+    </div>
+
 <% } %>
 
   </nav>

@@ -2,6 +2,11 @@ html {
   height: 100%;
 }
 
+body {
+  background-image: url("./media/mapWithPin.jpg");
+  background-size: cover;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -14,14 +19,18 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid black;
-  height: 500px;
+  border: 2px solid rgba(11,61,81, 0.95);
+  border-radius: 6px;
+  background-color:rgba(11,61,81, 0.95);
+  height: 600px;
   width: 500px;
   z-index: -1;
+  color: white;
 }
 
 .main_registration h1 {
-  margin: 0;
+  margin-top: 30px;
+  color: white;
 }
 
 .full_name, .email_address, .password, .buttonDiv {
@@ -29,19 +38,21 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 
 input {
   height: 26px;
-  width: 190px;
+  width: 290px;
 }
 
 .buttonDiv button {
-  height: 40px;
-  width: 80px;
+  margin-top: 10px;
+  height: 30px;
+  width: 140px;
   border-radius: 10px;
+  font-size: 16px;
 }
 
 
