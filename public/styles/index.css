@@ -75,7 +75,8 @@ body{
   z-index: 2;
 }
 
-.header-content h1{
+
+.header-content .title_logo{
   font-size: 50px;
   margin-bottom: 0;
 }t

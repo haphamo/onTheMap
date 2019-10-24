@@ -9,7 +9,11 @@
   justify-content: space-between;
   font-size: 20px;
   z-index: 10;
+}
 
+.title_logo {
+  font-family: 'Liu Jian Mao Cao', cursive;
+  font-size: 30px;
 }
 
 .nav_logo {
@@ -34,7 +38,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  margin: 30px;
+  width: 20%;
 }
 
 #slide-toggle {
