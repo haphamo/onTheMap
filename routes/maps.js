@@ -41,10 +41,10 @@ module.exports = (db) => {
   });
 
   // insert new pin data into existing map
-  router.post("/:mapid/pins", (req, res) => {
-
-    res.json( {result: result.rows})
-  });
+  // router.post("/:mapid/pins", (req, res) => {
+  //   db.query(`INSERT INTO pins (where map_id = $1`, [req.params.id])
+  //   res.json( {result: result.rows})
+  // });
 
    return router;
 };
