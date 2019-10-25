@@ -11,8 +11,8 @@
   <script type="text/javascript" src="/scripts/showMap.js"></script>
 
    <!--Google Map's api-->
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap" async defer>
-  </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=<%= api_key %>&callback=initMap&libraries=places" async defer>
+   </script>
   <title>Edit your map</title>
 </head>
 
@@ -21,20 +21,19 @@
   <% include ./partials/_header %>
 </header>
   <h1>view a map on this page</h1>
-  <input type="text" id="mapSearch" size=50 placeholder="search here">
-  <section id="map-container" class="maps">
 
-    <div class="map-container" class="maps"></div>
-  </section>
-  <div class="editBox"> Delete Pins !</div>
-  <div>
-   <ul id="pin-list" style="list-style-type:none"></ul>
-  </div>
-  <div>
-      <button id="addMarker">Add new Markers!</button>
-  </div>
-  <div>
+    <input type="text" id="mapSearch" size=50 placeholder="search here">
+
+    <div class="maps" id="map" ></div>
+  <div class="map-options">
+    <button id="update-maps-btn">Click here to Update new markers</button>
+    <div class="editBox"> Your markers are below, click on them to remove them!</div>
+    <div>
+    <ul id="pin-list" style="list-style-type:none"></ul>
+    </div>
+    <div>
       <button id="deleteMap" data-map-id=<%= mapid %>>Delete Map</button>
+    </div>
   </div>
 
 
