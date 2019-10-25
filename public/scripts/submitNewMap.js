@@ -205,7 +205,7 @@ $( document ).ready(function() {
     .then(res =>{
       console.log(res);
 
-      window.location.href = '/maps/'+ res.mapId;
+      window.location.href = '/maps/';
     })
 
     console.log(data)
