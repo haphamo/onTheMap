@@ -23,6 +23,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 2px solid rgba(11,61,81, 0.95);
+  background-color:rgba(11,61,81, 0.85);
 }
 
 .formArea {
@@ -40,13 +42,13 @@ body {
   text-align: center;
   font-size: 2rem;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
 }
 
 #crt-maps-btn{
   display: flex;
-  background:  rgba(184, 145, 220, 0.625);
-  color: white;
-  font-size: 1.2rem;
+  background:  white;
+  color: black;
   padding: 1rem 2rem;
   text-decoration: none;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

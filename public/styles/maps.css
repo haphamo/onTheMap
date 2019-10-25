@@ -1,4 +1,6 @@
-
+html {
+  height: 100%;
+}
 
 body {
   background-color: white;
@@ -11,12 +13,11 @@ body {
   justify-content: center;
   margin-top: 8rem;
   margin-bottom: 2rem;
-
 }
 
 .createBtn {
   display: flex;
-  background:  rgba(184, 145, 220, 0.625);
+  background:  rgba(11,61,81, 0.75);
   color: white;
   font-size: 1.2rem;
   padding: 1rem 2rem;
@@ -25,32 +26,23 @@ body {
 }
 
 .createBtn:hover {
-  display: flex;
-  background:  rgba(184, 145, 220, 0.625);
-  color: white;
-  font-size: 1.2rem;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .userMapsContainer {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   padding: 2rem;
 }
+
 .userMaps {
   height: 10rem;
   width: 80%;
-  background-color: rgba(184, 145, 220, 0.625);
+  background-color: rgba(11,61,81, 0.75);
   align-content: center;
   color: white;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 5rem;
-  text-align: center;
-  align-content: center;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -58,19 +50,6 @@ body {
 }
 
 .userMaps:hover {
-  height: 10rem;
-  width: 80%;
-  background-color: rgba(184, 145, 220, 0.625);
-  align-content: center;
-  color: white;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 5rem;
-  text-align: center;
-  align-content: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
