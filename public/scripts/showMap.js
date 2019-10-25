@@ -229,8 +229,12 @@ $(() => {
             markers
           }
           $.ajax(`/api/maps/${mapId}/pins`, {method: 'POST', data})
+          .then(()=> {
+          })
+          location.reload();
 
-          //alert("BUTTON WORKS????")
+
+         // alert("BUTTON WORKS????")
         })
 
         return true;
@@ -238,22 +242,3 @@ $(() => {
       })
 
 })
-
-// gets list of users maps
-// $.ajax(`/maps/`, {method: 'get'})
-//   //.then(res => window.location = "/maps")
-//   .then(res =>{console.log(res)
-//   })
-
-
-  // $.ajax(`/maps/`, {method: 'get'})
-  // //.then(res => window.location = "/maps")
-  // .then(res =>{console.log(res)
-  // })
-  // $('#pin-list').append(`<li class="deletePin"><button data-pinid="${element.id}">${element.comment}</button></li>`)
-// var bounds = new google.maps.LatLngBounds();
-// for (var i = 0; i < markers.length; i++) {
-//  bounds.extend(markers[i].getPosition());
-// }
-
-// map.fitBounds(bounds);

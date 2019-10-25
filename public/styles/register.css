@@ -24,7 +24,6 @@ main {
   background-color:rgba(11,61,81, 0.95);
   height: 600px;
   width: 500px;
-  z-index: -1;
   color: white;
 }
 

@@ -1,6 +1,6 @@
   <nav class="nav-bar">
     <div class="nav_logo">
-      <a  class="title_logo" action="/" href="/">OnTheMap</a>
+      <a  class="title_logo" action="/" href="/maps">OnTheMap</a>
       <% if (user_id !==undefined) { %>
       <a  action="/maps" method="GET" href="/maps">Favourites</a>
       <a  action="/maps" method="GET" href="/maps">My Maps</a>
@@ -12,8 +12,8 @@
 <% } else { %>
     <div class="nav_div">
       <form action="/login" method="POST" class="login">
-        Email: <input type="text" name="email">
-        Password: <input type="password" name="password">
+        Email: <input type="text" name="email" value="avijit.choudhury24@gmail.com">
+        Password: <input type="password" name="password" value="password">
         <button type="submit" name="login">Login</button>
       </form>
     </div>

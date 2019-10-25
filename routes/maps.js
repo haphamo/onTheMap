@@ -24,7 +24,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM pins
     WHERE map_id = $1;`, [req.params.id])
     .then(result => {
-    console.log(req.params.id)
+    //console.log(req.params.id)
     res.json( {result: result.rows})
     })
     .catch(err => res.status(500).send(err))

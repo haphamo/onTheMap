@@ -20,17 +20,6 @@ const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
-
-// //Creating pool instance
-// const pool = new Pool({//creating instance of Pool
-//   user: 'labber',
-//   password: '123',
-//   host: 'localhost',
-//   database: 'midterm'
-// });
-// Load the logger first so all (static) HTTP requests are logged to STDOUT
-// 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 app.use(cookieSession({
   name: 'session',
@@ -72,30 +61,11 @@ app.get("/", (req, res) => {
     res.render("users", templateVars)
   } else {
   console.log(db);
-  // Check if req.session.user_id exists
-  // if it does use the session id to query that users maps & pins
-  // then pass that information through templateVars for frontend to fetch with GoogleMaps
+
   res.render("home_page", templateVars);
   }
 });
-//////////////////////////////////////////////////
 
-app.get('/register', (req, res) => {
-  res.render("register", { user_id: req.session.user_id})
-})
-
-
-// const addUser = function (users) {
-
-//   return pool.query(`
-//   INSERT INTO users(name, email, password)
-//   VALUES($1, $2, $3) RETURNING *`,
-//   [users.full_name, users.email, users.password])
-//   .then(res => {
-//     console.log(users)
-//     return res.rows[0]
-//   }).catch(err => { return null; });
-// }
 
 app.post('/register', (req, res) => {
   const user = req.body;
@@ -104,9 +74,14 @@ app.post('/register', (req, res) => {
   VALUES($1, $2, $3) RETURNING *`,
     [user.full_name, user.email, user.password])
     .then(rows => {
-      res.redirect("/sessions/users");
+      res.redirect("/maps");
     }).catch(err => console.log('error', err));
 });
+
+
+app.get('/register', (req, res) => {
+  res.render("register", { user_id: req.session.user_id})
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
