@@ -1,0 +1,55 @@
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url("./media/mapWithPin.jpg");
+  background-size: cover;
+}
+
+.view_map_header {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin: 0 160px;
+  background-color:rgba(11,61,81, 0.70);
+}
+
+#update-maps-btn, #deleteMap {
+  margin-top: 10px;
+  height: 30px;
+  width: 200px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.editBox {
+  color: white;
+  margin-top: 20px;
+}
+
+.deletePin button {
+  margin: 5px 0px;
+  height: 40px;
+  width: 100px;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+#pin-list {
+  padding: 5px;
+}
+
+#deleteMap {
+  margin-bottom: 10px;
+}

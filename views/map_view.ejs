@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/index.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/map_view.css" type="text/css"/>
   <!--JS-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/showMap.js"></script>
@@ -20,22 +21,21 @@
 <header>
   <% include ./partials/_header %>
 </header>
-  <h1>view a map on this page</h1>
+  <h1 class="view_map_header">View Your Map</h1>
 
     <input type="text" id="mapSearch" size=50 placeholder="search here">
-
-    <div class="maps" id="map" ></div>
-  <div class="map-options">
-    <button id="update-maps-btn">Click here to Update new markers</button>
-    <div class="editBox"> Your markers are below, click on them to remove them!</div>
-    <div>
-    <ul id="pin-list" style="list-style-type:none"></ul>
+      <div class="maps" id="map" ></div>
+        <div class="map-options">
+          <button id="update-maps-btn">Update New Markers</button>
+            <div class="editBox"> Your markers are below, click on them to remove them!</div>
+            <div>
+            <ul id="pin-list" style="list-style-type:none"></ul>
+            </div>
+            <div>
+          <button id="deleteMap" data-map-id=<%= mapid %>>Delete Map</button>
+        </div>
     </div>
-    <div>
-      <button id="deleteMap" data-map-id=<%= mapid %>>Delete Map</button>
-    </div>
-  </div>
-
+  </main>
 
 
 

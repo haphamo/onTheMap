@@ -10052,7 +10052,7 @@ $(document).ready(function () {
       $(this).css('color', 'red');
       clicked = false;
     } else {
-      $(this).css('color', 'white');
+      $(this).css('color', 'black');
       clicked = true;
     }
   })

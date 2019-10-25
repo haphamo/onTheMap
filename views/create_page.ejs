@@ -28,19 +28,21 @@
     <% include ./partials/_header %>
   </header>
   <div class="pageTitle">Create a new map!</div>
-  <section class="createArea">
+  <section>
+
     <div id="map-containter"><!--Markup for createMap element-->
       <form class="formArea" action="/maps/create" method="POST">
         <div class="title">
           <h2>Title</h2>
           <input id="new-map-title" type="text" name="title" size=50 placeholder="Enter title">
         </div>
-        <div>
+        <div class="title-description">
           Description
           <input id="new-map-desc" type="text" name="description" placeholder="Description" size=100>
         </div>
-        <input type="text" id="mapSearch" size=50 placeholder="search here">
         <button id="crt-maps-btn">SUBMIT</button>
+      </div>
+        <input type="text" id="mapSearch" size=50 placeholder="search here">
         <div class="maps" id="map" ></div><!--map api goes here-->
       </form>
   </section>

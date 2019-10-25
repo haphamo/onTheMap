@@ -1,9 +1,9 @@
   <nav class="nav-bar">
     <div class="nav_logo">
-      <a  class="title_logo" action="/home_page" href="home_page">OnTheMap</a>
+      <a  class="title_logo" action="/" href="/">OnTheMap</a>
       <% if (user_id !==undefined) { %>
-      <a  action="/favorites" method="GET" href="favorites">Favourites</a>
-      <a  action="/users" method="GET" href="users">My Maps</a>
+      <a  action="/maps" method="GET" href="/maps">Favourites</a>
+      <a  action="/maps" method="GET" href="/maps">My Maps</a>
     </div>
     <form class="logout" method="POST" action="/logout">
       <button type="submit" name="logout">Logout</button>
