@@ -24,22 +24,13 @@ module.exports = (db) => {
     db.query(`SELECT * FROM pins
     WHERE map_id = $1;`, [req.params.id])
     .then(result => {
-    res.json( {result: result.rows})
-    })
-    .catch(err => res.status(500).send(err))
-  });
-  // add new marker NOT COMPLETED YET...!
-  router.post("/:id/pins", (req, res) => {
-    db.query(`INSERT INTO * FROM pins
-    WHERE map_id = $1;`, [req.params.id])
-    .then(result => {
+    console.log(req.params.id)
     res.json( {result: result.rows})
     })
     .catch(err => res.status(500).send(err))
   });
 
-
-  // show pins for specific map delete path
+  // only show data for specfic pin
   router.delete("/:mapid/pins/:pinId", (req, res) => {
 
     db.query(`DELETE from pins WHERE id = $1;`, [req.params.pinId])
@@ -49,17 +40,26 @@ module.exports = (db) => {
     .catch(err => res.status(500).send(err))
   });
 
-  //delete map route
-  router.delete("/:id", (req, res) => {
+  router.delete("/:mapid", (req, res) => {
 
-    db.query(`DELETE from maps WHERE id = $1;`, [req.params.id])
+    db.query(`DELETE from maps WHERE id = $1;`, [req.params.mapid])
     .then(result => {
-      res.status(200).send()
-      res.redirect('/maps')
+    res.json( {result: result.rows})
     })
     .catch(err => res.status(500).send(err))
   });
-
+  //insert new pin data into existing map
+  router.post("/:mapid/pins", async (req, res) => {
+    //let values = [req.params.mapid ];
+    // db.query(`INSERT INTO pins (map_id, comment, latitude, longitude) values ($1, $2, $3, $4) where map_id = $5`, [req.params.id])
+    // res.json( {result: result.rows})
+    console.log("here !");
+    await Promise.all(req.body.markers.map(pin =>
+      db.query('INSERT INTO pins (map_id, comment, latitude, longitude) values ($1, $2, $3, $4);',
+               [req.params.mapid, pin.comment, pin.lat, pin.lng]))
+    )
+    console.log("after promise");
+  });
 
    return router;
 };
