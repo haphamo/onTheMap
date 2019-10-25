@@ -40,11 +40,26 @@ module.exports = (db) => {
     .catch(err => res.status(500).send(err))
   });
 
-  // insert new pin data into existing map
-  // router.post("/:mapid/pins", (req, res) => {
-  //   db.query(`INSERT INTO pins (where map_id = $1`, [req.params.id])
-  //   res.json( {result: result.rows})
-  // });
+  router.delete("/:mapid", (req, res) => {
+
+    db.query(`DELETE from maps WHERE id = $1;`, [req.params.mapid])
+    .then(result => {
+    res.json( {result: result.rows})
+    })
+    .catch(err => res.status(500).send(err))
+  });
+  //insert new pin data into existing map
+  router.post("/:mapid/pins", async (req, res) => {
+    //let values = [req.params.mapid ];
+    // db.query(`INSERT INTO pins (map_id, comment, latitude, longitude) values ($1, $2, $3, $4) where map_id = $5`, [req.params.id])
+    // res.json( {result: result.rows})
+    console.log("here !");
+    await Promise.all(req.body.markers.map(pin =>
+      db.query('INSERT INTO pins (map_id, comment, latitude, longitude) values ($1, $2, $3, $4);',
+               [req.params.mapid, pin.comment, pin.lat, pin.lng]))
+    )
+    console.log("after promise");
+  });
 
    return router;
 };
