@@ -62,21 +62,6 @@ module.exports = (db) => {
       }
     })
 
-    //route to delete specific pin
-    router.post("/maps/:id/pins/:id", (req, res) => {
-
-
-      try {
-
-        console.log(req.body)
-        console.log("THINGS WORKED!!!!!");
-        //res.json({status:'ok', mapId: result.rows[0].id});
-      } catch (err) {
-        console.error(err);
-      }
-    })
-
-
     router.post("/login", (req, res) => {
     db.query(`SELECT * FROM users WHERE email = $1 AND password = $2;`, [req.body.email, req.body.password])
     .then(data => {

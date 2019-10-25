@@ -24,22 +24,13 @@ module.exports = (db) => {
     db.query(`SELECT * FROM pins
     WHERE map_id = $1;`, [req.params.id])
     .then(result => {
-    res.json( {result: result.rows})
-    })
-    .catch(err => res.status(500).send(err))
-  });
-  // add new marker NOT COMPLETED YET...!
-  router.post("/:id/pins", (req, res) => {
-    db.query(`INSERT INTO * FROM pins
-    WHERE map_id = $1;`, [req.params.id])
-    .then(result => {
+    console.log(req.params.id)
     res.json( {result: result.rows})
     })
     .catch(err => res.status(500).send(err))
   });
 
-
-  // show pins for specific map delete path
+  // only show data for specfic pin
   router.delete("/:mapid/pins/:pinId", (req, res) => {
 
     db.query(`DELETE from pins WHERE id = $1;`, [req.params.pinId])
@@ -49,17 +40,11 @@ module.exports = (db) => {
     .catch(err => res.status(500).send(err))
   });
 
-  //delete map route
-  router.delete("/:id", (req, res) => {
+  // insert new pin data into existing map
+  router.post("/:mapid/pins", (req, res) => {
 
-    db.query(`DELETE from maps WHERE id = $1;`, [req.params.id])
-    .then(result => {
-      res.status(200).send()
-      res.redirect('/maps')
-    })
-    .catch(err => res.status(500).send(err))
+    res.json( {result: result.rows})
   });
-
 
    return router;
 };
