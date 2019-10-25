@@ -84,12 +84,4 @@ const getPins = function() {
 //   })
 // });
 
-$(document).ready(function () {
 
-  $(".btn").on('click', function () {
-    $(".nav_div").slideToggle('fast', function () {
-      if ($(this).is(':visible'))
-      $(this).css('display', 'flex');
-    });
-  });
-})

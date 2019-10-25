@@ -10035,3 +10035,31 @@ if ( !noGlobal ) {
 
 return jQuery;
 } ) );
+
+$(document).ready(function () {
+
+  $(".btn").on('click', function () {
+    $(".nav_div").slideToggle('fast', function () {
+      if ($(this).is(':visible'))
+        $(this).css('display', 'flex');
+    });
+  });
+
+  let clicked = true;
+
+  $(".fa-bookmark").click(function () {
+    if (clicked) {
+      $(this).css('color', 'red');
+      clicked = false;
+    } else {
+      $(this).css('color', 'white');
+      clicked = true;
+    }
+  })
+})
+
+
+
+
+
+
