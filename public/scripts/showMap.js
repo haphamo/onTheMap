@@ -87,7 +87,11 @@ $(() => {
         $('#update-maps-btn').on('click', (evt) => {
           //debugger
           evt.preventDefault();
-          $.ajax(`/api/maps/${mapId}/pins`, {method: 'post'})
+          const data = {
+            datatype: JSON,
+            markers
+          }
+          $.ajax(`/api/maps/${mapId}/pins`, {method: 'POST', data})
 
           //alert("BUTTON WORKS????")
         })
