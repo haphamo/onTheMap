@@ -38,12 +38,22 @@
     <div class="mapBox">MAP 1 HERE</div>
   </section> -->
   <section class="userMapsContainer">
-    <div class="userMaps">
-      <a href="/maps/11" class="singleMap">USER MAP SAMPLE</a>
+    <div class="mapBox">
+<ul>
+        <% for(let result in results) {  %>
+          <!-- <% for (let i = results.length - 1; i > 0; i--) %> -->
+
+          <!-- <button class="singleMap" data-map_id=<%= results.id %> -->
+          <a href="/maps/<%=results[result].id%>">
+            <li class="eachMap"><%= results[result].title %></li>
+          </a>
+           <% } %>
+        </ul>
       <span>
         <!-- <button type="submit" class="favBtn">Favourite</button> -->
         <button class="far fa-bookmark"></button>
       </span>
+
     </div>
 
   </section>

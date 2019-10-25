@@ -14,8 +14,32 @@ module.exports = (db) => {
   // List of all maps user has created
   router.get("/maps", (req, res) => {
     //query here to retreive data from database of the maps of the user
-    let templateVars = { api_key, user_id: req.session.user_id }
-    res.render("users_maps", templateVars)
+    let templateVars;
+    let mapId;
+    const user = req.session.user_id;
+    const renderMaps = async function(userId) {
+      console.log('88888888888888888888888888888888888888')
+      console.log(req);
+      const input = (Number(userId)|0).toString();
+      return await db.query(`SELECT *
+                             FROM maps
+                             WHERE user_id = ${input};`).then(result => result.rows)
+    }
+
+  renderMaps(user).then(mapsArray => {
+    templateVars = { api_key, user_id: req.session.user_id, results: mapsArray}
+      mapsArrayResult = mapsArray;
+      for (map of mapsArray){
+        console.log('==========')
+        console.log(map.id);
+        // mapId = map.id;
+        console.log('===========')
+
+      }
+      console.log('this is the ID======>', mapsArray[0].id)
+      res.render("users_maps", templateVars)
+    })
+
 
   })
   // GET users create page
