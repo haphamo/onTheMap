@@ -3,7 +3,8 @@ On The Map
 A platform which allows users to create maps and place pins on them. 
 Users can add and remove pins from created maps and view them on their map page. 
 ![Homepage](homepage.gif)
-test
+![Create New Map](createNewMap.gif)
+
 
 LHL Node Skeleton
 =========
