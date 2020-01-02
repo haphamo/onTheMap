@@ -1,3 +1,10 @@
+On The Map
+
+A platform which allows users to create maps and place pins on them. 
+Users can add and remove pins from created maps and view them on their map page. 
+<iframe src="https://giphy.com/embed/gFsu0b9fQTHf71jE1A" width="480" height="236" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/gFsu0b9fQTHf71jE1A">via GIPHY</a></p>
+
+
 LHL Node Skeleton
 =========
 

@@ -12,7 +12,7 @@ module.exports = (db) => {
     .then(result => {
     res.json( {result: result.rows})
     })
-      .catch(err => {
+    .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
