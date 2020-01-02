@@ -5,13 +5,21 @@ Users can add and remove pins from created maps and view them on their map page.
 
 <p align="center">This is the Homepage</p>
 
-<p align="center">![Homepage](homepage.gif)</p>
+![Homepage](homepage.gif)
 
+<p align="center">Creating a new map</p>
 
 ![Create New Map](createNewMap.gif)
+
+<p align="center">Adding more pins after map creation</p>
+
 ![Add More Pins](addPin.gif)
+
+<p align="center">Removing Pins from Map</p>
+
 ![Delete Pins](deletePins.gif)
 
+You can also delete the whole map as well.
 
 
 
